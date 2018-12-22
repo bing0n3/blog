@@ -28,4 +28,4 @@ deploy:
   fqdn: blog.bing0ne.com # 如果是自定义域名，此处要填
 #   keep-history: true # 是否保持target-branch分支的提交记录
   on:
-    branch: hugo # 博客源码的分支
+    branch: master # 博客源码的分支
