@@ -1,7 +1,7 @@
 baseURL = "https://blog.bing0ne.com"
 languageCode = "zh-CN"
 title = "bing0ne Base"
-theme = "maupassant"
+theme = "maupassant-hugo"
 googleAnalytics = "UA-71832126-1"
 
 [author]
