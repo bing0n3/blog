@@ -1,23 +1,21 @@
-# https://docs.travis-ci.com/user/deployment/pages/
-# https://docs.travis-ci.com/user/languages/go/
-# https://docs.travis-ci.com/user/customizing-the-build/
-
 language: go
 
-python:
-    - master
+go:
+  - "1.8"  # 指定Golang 1.8
 
-# before_install
-# install - install any dependencies required
+# Specify which branches to build using a safelist
+# 分支白名单限制: 只有hugo分支的提交才会触发构建
+branches:
+  only:
+    - hugo 
+
 install:
-    - go get github.com/gohugoio/hugo
+# 安装最新的hugo
+  - go get github.com/spf13/hugo 
 
-before_script:
-    - rm -rf public 2> /dev/null
-
-# script - run the build script
 script:
-    - hugo
+# 运行hugo命令
+  - hugo
 
 deploy:
   provider: pages # 重要，指定这是一份github pages的部署配置
@@ -26,6 +24,6 @@ deploy:
   target-branch: gh-pages # 要将静态站点文件发布到哪个分支
   github-token: $GITHUB_TOKEN # 重要，$GITHUB_TOKEN是变量，需要在GitHub上申请、再到配置到Travis
   fqdn: blog.bing0ne.com # 如果是自定义域名，此处要填
-#   keep-history: true # 是否保持target-branch分支的提交记录
+  keep-history: true # 是否保持target-branch分支的提交记录
   on:
     branch: master # 博客源码的分支
