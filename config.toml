@@ -1,0 +1,35 @@
+baseURL = "https://blog.bing0ne.com"
+languageCode = "zh-CN"
+title = "bing0ne Base"
+theme = "maupassant"
+googleAnalytics = "UA-71832126-1"
+
+[author]
+  name = "bing0ne"
+
+[params]
+  author = "bing0ne"
+  subtitle = "M.S.in Computer Engineering,CWRU. Go, Machine Learning."
+  keywords = "golang,blog"
+  description = "人没有梦想和神经网络有什么区别"
+
+[menu]
+  [[menu.main]]
+    identifier = "archives"
+    name = "归档"
+    url = "/archives/"
+    weight = 3
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "https://www.bing0ne.com"
+    weight = 4
+
+[params.utteranc]
+    enable = true
+    repo = "bing0n3/blog"  
+    issueTerm = "pathname" 
+    theme = "github-light" 
+
+[permalinks]
+  post = "/p/:slug"
