@@ -1,29 +1,47 @@
-baseURL = "https://blog.bing0ne.com"
-languageCode = "zh-CN"
+baseURL = "/"
+languageCode = "en-US"
 title = "bing0ne Base"
-theme = "maupassant-hugo"
-googleAnalytics = "UA-71832126-1"
+theme = "casper"
+paginate = 6
 
 [author]
   name = "bing0ne"
 
 [params]
-  author = "bing0ne"
-  subtitle = "M.S.in Computer Engineering,CWRU. Go, Machine Learning."
+  title = "bing0ne Base"
+  subtitle = "M.S. in Computer Engineering, CWRU. Go, Machine Learning."
   keywords = "golang,blog"
   description = "人没有梦想和神经网络有什么区别"
+  cover = "img/blog-cover.jpeg"
+  googleAnalytics = "UA-71832126-1"
+
+  twitterName = "bing0ne"
+  githubName = "bing0n3"
+  
+
+  author = "bing0ne"
+  authorAvatar = "img/avatar-bing0ne.jpeg"
+  authorLocation = "Cleveland, US"
+  authorWebsite = "https://www.bing0ne.com"
+  authorDescription = "人没有梦想和神经网络有什么区别"
+
+  pageNotFoundTitle = "404 - 这是一片什么都没有的荒原"
 
 [menu]
   [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 3
+    name = "Home"
+    url = "/"
+    weight = 100
   [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "https://www.bing0ne.com"
-    weight = 4
+    identifier = "Dev"
+    name = "Dev"
+    url = "/categories/Dev"
+    weight = 99
+  [[menu.main]]
+    identifier = "Life"
+    name = "Life"
+    url = "/categories/eassy"
+    weight = 98
 
 [params.utteranc]
     enable = true
