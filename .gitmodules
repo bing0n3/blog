@@ -4,3 +4,6 @@
 [submodule "themes/casper"]
 	path = themes/casper
 	url = https://github.com/bing0n3/hugo-casper-two.git 
+[submodule "themes/aether"]
+	path = themes/aether
+	url = https://github.com/josephhutch/aether.git

@@ -1,47 +1,48 @@
 baseURL = "/"
-languageCode = "en-US"
+languageCode = "zh-cn"
 title = "bing0ne Base"
-theme = "casper"
+theme = "aether"
 paginate = 6
+
 
 [author]
   name = "bing0ne"
 
 [params]
   title = "bing0ne Base"
-  subtitle = "M.S. in Computer Engineering, CWRU. Go, Machine Learning."
   keywords = "golang,blog"
+  brand = "bing0ne"
   description = "人没有梦想和神经网络有什么区别"
-  cover = "img/blog-cover.jpeg"
+  homeimg = "img/blog-cover.jpeg"
+  bgimg = "https://i.loli.net/2019/01/13/5c3a9ac0c0e55.png"
   googleAnalytics = "UA-71832126-1"
-
   twitterName = "bing0ne"
   githubName = "bing0n3"
   
 
-  author = "bing0ne"
-  authorAvatar = "img/avatar-bing0ne.jpeg"
-  authorLocation = "Cleveland, US"
-  authorWebsite = "https://www.bing0ne.com"
-  authorDescription = "人没有梦想和神经网络有什么区别"
+  # author = "bing0ne"
+  # authorAvatar = "img/avatar-bing0ne.jpeg"
+  # authorLocation = "Cleveland, US"
+  # authorWebsite = "https://www.bing0ne.com"
+  # authorDescription = "人没有梦想和神经网络有什么区别"
 
-  pageNotFoundTitle = "404 - 这是一片什么都没有的荒原"
+  # pageNotFoundTitle = "404 - 这是一片什么都没有的荒原"
 
-[menu]
-  [[menu.main]]
-    name = "Home"
-    url = "/"
-    weight = 100
-  [[menu.main]]
-    identifier = "Dev"
-    name = "Dev"
-    url = "/categories/Dev"
-    weight = 99
-  [[menu.main]]
-    identifier = "Life"
-    name = "Life"
-    url = "/categories/eassy"
-    weight = 98
+# [menu]
+#   [[menu.main]]
+#     name = "Home"
+#     url = "/"
+#     weight = 100
+#   [[menu.main]]
+#     identifier = "Dev"
+#     name = "Dev"
+#     url = "/categories/Dev"
+#     weight = 99
+#   [[menu.main]]
+#     identifier = "Life"
+#     name = "Life"
+#     url = "/categories/eassy"
+#     weight = 98
 
 [params.utteranc]
     enable = true
