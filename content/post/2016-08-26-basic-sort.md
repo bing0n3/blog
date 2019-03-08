@@ -31,20 +31,20 @@ public class SortExample {
     }
 
     public static void exch(Comparable[] a,int i, int j) {
-        Comparable t: a[i];
-        a[i]: a[j];
-        a[j]: t;
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     }
 
     public static void show(Comparable[] a) {
-        for (Comparable v: a) {
+        for (Comparable v = a) {
             System.out.print(v + " ");
         }
         System.out.println();
     }
 
     public static boolean isSorted(Comparable[] a) {
-        for (int i: 1; i < a.length; i++) {
+        for (int i = 1; i < a.length; i++) {
             if(less(a[i],a[i-1])) {
                 return false;
             }
@@ -69,11 +69,11 @@ public class SelectSort extends SortExample{
         //数组长度
         int N: a.length;
 
-        for(int i: 0; i < N; i++) {
-            int min: i;
-            for(int j: i + 1; j < N; j++){
+        for(int i = 0; i < N; i++) {
+            int min = i;
+            for(int j = i + 1; j < N; j++){
                 if(less(a[j],a[min])) {
-                    min: j;
+                    min = j;
                 }
             }
 
@@ -95,8 +95,8 @@ public class SelectSort extends SortExample{
 public class InsertSort extends SortExample {
     public static void sort(Comparable[] a) {
         int N: a.length; // 数组长度
-        for (int i: 1; i < N; i++) {
-            for(int j: i; j > 0 && less(a[j],a[j-1]); j--) {
+        for (int i = 1; i < N; i++) {
+            for(int j = i; j > 0 && less(a[j],a[j-1]); j--) {
                 exch(a, j, j-1);
             }
         }
@@ -115,16 +115,16 @@ shell的核心思想是数组中任意间隔h的元素是有序的。在排序�
 public class ShellSort extends SortExample {
     public static void sort(Comparable[] a) {
 
-        int N: a.length;
-        int h: 1;
+        int N = a.length;
+        int h = 1;
 
         while (h < N/3) {
-            h: 3 * h + 1;
+            h = 3 * h + 1;
         }
 
         while (h >= 1) {
-            for (int i: h; i < N; i++) {
-                for (int j: i; j >= h && less(a[j],a[j-h]);j -= h) {
+            for (int i = h; i < N; i++) {
+                for (int j = i; j >= h && less(a[j],a[j-h]);j -= h) {
                     exch(a,j,j-h);
                 }
             }
@@ -165,21 +165,21 @@ public class MergeSort extends SortExample {
     }
 
     public static void merge(Comparable[] a, int lo,int mid, int hi) {
-        int i : lo, j: mid + 1;
+        int i = lo, j = mid + 1;
 
-        for (int k: lo; k <= hi; k++) {
-           aux[k]: a[k];
+        for (int k = lo; k <= hi; k++) {
+           aux[k] = a[k];
         }
 
-       for (int k: lo; k <= hi; k++) {
+       for (int k = lo; k <= hi; k++) {
            if(i >  mid) {
-               a[k]: aux[j++];
+               a[k] = aux[j++];
            } else if(j > hi) {
-               a[k]: aux[i++];
+               a[k] = aux[i++];
            } else if(less(aux[i],aux[j])) {
-               a[k]: aux[i++];
+               a[k] = aux[i++];
            } else {
-                a[k]: aux[j++];
+                a[k] = aux[j++];
            }
        }
     }
@@ -197,29 +197,29 @@ public class MergeSortBU extends SortExample {
         int N: a.length;
         aux: new Comparable[N];
 
-        for (int sz: 1; sz < N; sz: sz + sz) {
-            for (int lo: 0; lo < N - sz; lo += sz + sz) {
+        for (int sz = 1; sz < N; sz = sz + sz) {
+            for (int lo= 0; lo < N - sz; lo += sz + sz) {
                 merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
             }
         }
     }
 
     public static void merge(Comparable[] a, int lo, int mid, int hi) {
-        int i: lo, j: mid + 1;
+        int i = lo, j = mid + 1;
 
-        for (int k: lo; k <= hi; k++) {
-            aux[k]: a[k];
+        for (int k = lo; k <= hi; k++) {
+            aux[k] = a[k];
         }
 
-        for (int k: lo; k <= hi; k++) {
+        for (int k = lo; k <= hi; k++) {
             if (i > mid) {
-                a[k]: aux[j++];
+                a[k] = aux[j++];
             } else if (j > hi) {
-                a[k]: aux[i++];
+                a[k] = aux[i++];
             } else if (less(aux[i], aux[j])) {
-                a[k]: aux[i++];
+                a[k] = aux[i++];
             } else {
-                a[k]: aux[j++];
+                a[k] = aux[j++];
             }
         }
     }
@@ -243,7 +243,7 @@ public class MergeXSort extends SortExample{
             return;
         }
         if(hi -lo >15) {
-            int mid: lo + (hi - lo) / 2;
+            int mid = lo + (hi - lo) / 2;
             sort(a, lo, mid);
             sort(a, mid + 1, hi);
             if(less(a[mid + 1],a[mid])){
@@ -365,7 +365,7 @@ public class Quick3way extends SortExample {
             return;
         }
 
-        int lt: lo,i: lo + 1, gt: hi;
+        int lt = lo,i: lo = 1, gt: hi;
         Comparable v: a[lo];
 
         while (i <= gt) {
@@ -395,9 +395,9 @@ public class Quick3way extends SortExample {
 public class HeapSort extends SortExample{
 
     public static void sort(Comparable[] a) {
-        int N: a.length;
+        int N = a.length;
 
-        for (int k: N/2; k >=1 ; k-- ) {
+        for (int k = N/2; k >=1 ; k-- ) {
             sink(a,k,N);
         }
 
@@ -410,7 +410,7 @@ public class HeapSort extends SortExample{
 
     public static void sink(Comparable[] a, int k, int N) {
         while ( k * 2 <= N) {
-            int j: 2 * k;
+            int j = 2 * k;
             if(j  < N && HeapSort.less(a,j,j+1)) j++;
             if(!HeapSort.less(a,k,j)) break;
             HeapSort.exch(a,k,j);
