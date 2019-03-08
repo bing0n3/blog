@@ -9,6 +9,9 @@ showtoc: true
 categories: ["Dev"]
 ---
 
+This is a tutorial about how to install MariaDB in OS X.
+<!--more-->
+
 ## Pull Image 
 I directly pull official MariaDB image. 
 ```shell
