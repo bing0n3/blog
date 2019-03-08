@@ -1,14 +1,15 @@
 baseURL = "/"
-languageCode = "zh-cn"
+languageCode = "en"
 title = "bing0ne Base"
-theme = "aether"
+theme = "hyde"
 paginate = 6
-
+googleAnalytics = "UA-71832126-1"
 
 [author]
   name = "bing0ne"
 
 [params]
+  themeColor = "theme-base-0c"
   title = "bing0ne Base"
   keywords = "golang,blog"
   brand = "bing0ne"
@@ -16,8 +17,11 @@ paginate = 6
   homeimg = "img/blog-cover.jpeg"
   bgimg = "https://i.loli.net/2019/01/13/5c3a9ac0c0e55.png"
   googleAnalytics = "UA-71832126-1"
-  twitterName = "bing0ne"
-  githubName = "bing0n3"
+  twitter = "https://twitter.com/bing0ne"
+  github = "https://github.com/bing0n3"
+  email = "hi@bing0ne.com"
+  disqusShortname = "bing0ne"
+
   
 
   # author = "bing0ne"
@@ -28,27 +32,25 @@ paginate = 6
 
   # pageNotFoundTitle = "404 - 这是一片什么都没有的荒原"
 
-# [menu]
-#   [[menu.main]]
-#     name = "Home"
-#     url = "/"
-#     weight = 100
-#   [[menu.main]]
-#     identifier = "Dev"
-#     name = "Dev"
-#     url = "/categories/Dev"
-#     weight = 99
-#   [[menu.main]]
-#     identifier = "Life"
-#     name = "Life"
-#     url = "/categories/eassy"
-#     weight = 98
-
-[params.utteranc]
-    enable = true
-    repo = "bing0n3/blog"  
-    issueTerm = "pathname" 
-    theme = "github-light" 
+[menu]
+    [[menu.main]]
+        name = "Contact"
+        url = "mailto:hi@bing0ne.com" 
+        weight = 94
+    [[menu.main]]
+        name = "Github"
+        url = "https://github.com/bing0n3"
+        weight = 95
+   [[menu.main]]
+     identifier = "Dev"
+     name = "Dev"
+     url = "/categories/Dev"
+     weight = 2
+   [[menu.main]]
+     identifier = "Life"
+     name = "Life"
+     url = "/categories/eassy"
+     weight = 3
 
 [permalinks]
   post = "/p/:slug"
