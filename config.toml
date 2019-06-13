@@ -26,8 +26,26 @@ copyright = "© This post is licensed under a Creative Commons Attribution-NonCo
   url = "/"
 
 [[menu.main]]
-  name = "Tags"
+  name = "Dev"
   weight = 20
+  identifier = "dev"
+  url = "/categories/dev/"
+
+[[menu.main]]
+  name = "Eassy"
+  weight = 30
+  identifier = "eassy"
+  url = "/categories/eassy/"
+
+[[menu.main]]
+  name = "GSoC"
+  weight = 40
+  identifier = "gsoc"
+  url = "/categories/gsoc/"
+
+[[menu.main]]
+  name = "Tags"
+  weight = 50
   identifier = "tags"
   url = "/tags/"
 
