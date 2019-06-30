@@ -31,8 +31,7 @@ It is tricy to make the table scrollable. When we made `tbody` scrollable, the `
 ![issue_detail](gsoc_issue_detail.png)
 The first idea about this part is to creat a seperate new page, but it would be a little confused because augur frontend organized by card and user experience would be not uniform
 . This is why choose modal component to display issue detail which is much easy for user to understand. 
-
-When I review coding work in this part, all work are simple and direct. I actually met challenge in passing parameter from parent component into child components and catching event from parenet component in developing. 
+ 
 
 - visualization of a few metrics related to issue
     - issue active
