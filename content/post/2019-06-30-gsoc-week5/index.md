@@ -1,5 +1,5 @@
 ---
-title: "Gsoc Week 5 Summary"
+title: "GsoC Week 5 Summary"
 author: "bing0ne"
 date: 2019-06-30T15:31:02+08:00
 tags: ["GsoC"]
