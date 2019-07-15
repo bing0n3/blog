@@ -29,7 +29,7 @@ No meeting was held this week.
   - badge_level
 
 ### Pull Requests
-- [chaoss/Augur#317](https://github.com/chaoss/augur/pull/325): Add Metric Status Worker #325
+- [chaoss/Augur#325](https://github.com/chaoss/augur/pull/325): Add Metric Status Worker #325
 
 
 
