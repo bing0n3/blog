@@ -29,7 +29,8 @@ No meeting was held this week.
   - badge_level
 
 ### Pull Requests
-- [chaoss/Augur#317](https://github.com/chaoss/augur/pull/317): Dev: Refactored the following metric implementations to include 'repo_name' 
+- [chaoss/Augur#317](https://github.com/chaoss/augur/pull/325): Add Metric Status Worker #325
+
 
 
 ## Challenges Encountered
