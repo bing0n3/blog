@@ -19,29 +19,29 @@ Date: N/A
 ## Work Done this Week
 
 - Frontend
-  - Translate Vue Component to class style component in Typescript
-    - Repos.vue
-    - RepoGroups.vue
-    - Fix the problem Vuex's mapAction and mapGetter not work
+    - Translate Vue Component to class style component in Typescript
+        - Repos.vue
+        - RepoGroups.vue
+        - Fix the problem Vuex's mapAction and mapGetter not work
   - Optimize AugurAPI.ts 
-    - Translate `Repo()` function to class
-    - Add a `RepoGroup()` class
+        - Translate `Repo()` function to class
+        - Add a `RepoGroup()` class
 
 - Backend 
-  - Add Risk Metric Implementation 
-    - CII Best Practice
-    - Committers
-    - License Declared
-    - License Coverage
-    - License Count
-    - **Note**: unit test not added because of need data. 
+    - Add Risk Metric Implementation 
+      - CII Best Practice
+      - Committers
+      - License Declared
+      - License Coverage
+      - License Count
+      - **Note**: unit test not added because of need data. 
 
 - Document 
-  - Test Drive Aguru Installation instruction 
+    - Test Drive Aguru Installation instruction 
 
 ### Work Still in Progress
 - Load Data correctly when we access a page through a URL. 
-  - Optimize `getRepoRelations()` method
+    - Optimize `getRepoRelations()` method
 - Translate RepoOverview.vue and move function to action or mutation
 
 ### Pull Requests
