@@ -36,6 +36,9 @@ Date: N/A
     - License Count
     - **Note**: unit test not added because of need data. 
 
+- Document 
+  - Test Drive Aguru Installation instruction 
+
 ### Work Still in Progress
 - Load Data correctly when we access a page through a URL. 
   - Optimize `getRepoRelations()` method
