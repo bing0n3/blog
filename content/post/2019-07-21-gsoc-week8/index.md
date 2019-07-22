@@ -18,18 +18,23 @@ Date: N/A
 
 ## Work Done this Week
 
-- Translate Vue Component to class style component in Typescript
-  - Repos.vue
-  - RepoGroups.vue
-  - Fix the problem Vuex's mapAction and mapGetter not work
+- Frontend
+  - Translate Vue Component to class style component in Typescript
+    - Repos.vue
+    - RepoGroups.vue
+    - Fix the problem Vuex's mapAction and mapGetter not work
+  - Optimize AugurAPI.ts 
+    - Translate `Repo()` function to class
+    - Add a `RepoGroup()` class
 
-- Add Risk Metric Implementation 
-  - CII Best Practice
-  - Committers
-  - License Declared
-  - License Coverage
-  - License Count
-  - **Note**: unit test not added because of need data. 
+- Backend 
+  - Add Risk Metric Implementation 
+    - CII Best Practice
+    - Committers
+    - License Declared
+    - License Coverage
+    - License Count
+    - **Note**: unit test not added because of need data. 
 
 ### Work Still in Progress
 - Load Data correctly when we access a page through a URL. 
@@ -51,3 +56,4 @@ Date: N/A
 - Persist Vuex state into cookie, and import a new package `vuex-persistedstate`
 - Start to convert visulization chart
 - More future plans for next week to be decided in the next meeting on Monday, 22th July 2019.
+- Optimize metric_status worker
