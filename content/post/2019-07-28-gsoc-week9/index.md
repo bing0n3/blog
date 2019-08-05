@@ -41,4 +41,4 @@ Date: 07/22/2019
 ## Future Work 
 - Finish Comparison work  
 - Add more risk metric endpoints
-- More future plans for next week to be decided in the next meeting on Monday, 22th July 2019.
+- More future plans for next week to be decided in the next meeting on Monday, 29th July 2019.
