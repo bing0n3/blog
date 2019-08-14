@@ -36,6 +36,8 @@ This week is the 10th week of Google Summer of Week and the last week of second 
 - [chaoss/Augur#338](https://github.com/chaoss/augur/pull/338): add CompareControl Component
 - [chaoss/Augur#341](https://github.com/chaoss/augur/pull/341): Refactor Metric Status Worker
 
+
+
 ## Future Work 
 - More Risk Metric Implementation 
 - Add Forntend Route for comparsion and repo group
