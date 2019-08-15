@@ -1,13 +1,13 @@
 ---
-title: "GsoC Week 10 Summary"
+title: "GsoC Week 11 Summary"
 author: "bing0ne"
-date: 2019-08-05T12:15:02+08:00
+date: 2019-08-11T12:15:02+08:00
 tags: ["GsoC"]
-slug: "gsoc-week10"
+slug: "gsoc-week11"
 categories: ["GSoC"]
 ---
 
-This week is the 10th week of Google Summer of Week and the last week of second phase. I add a control component for visulization based on new ui and refactor metric status worker. 
+This week is the 11th week of Google Summer of Week and the last week of third phase. 
 
 <!--more-->
 
