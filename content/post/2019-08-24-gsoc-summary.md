@@ -13,6 +13,7 @@ categories: ["GSoC"]
 * Implement Risk Metrics and Evolution Metrics 
 * Implement Augur Worker
 
+<!--more-->
 
 ## Pull Requests Merged 
 
