@@ -1,7 +1,7 @@
 baseURL = "https://blog.bing0ne.com"
 languageCode = "en"
 title = "bing0ne Base"
-theme = "nuo"
+theme = "paper"
 enableRobotsTXT = true
 PygmentsCodeFences = true
 canonifyurls = true
