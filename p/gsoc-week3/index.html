@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>GSoC Week 3 Summary - bing0ne Base</title>
+    
+    <meta name="description" content="This week is the third week of the Goog Summer of Code. I foucuesd on refactoring metric implementations and API endpoints.">
+    <meta name="author" content="bing0ne">
+    
+    <link href="https://blog.bing0ne.com/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://blog.bing0ne.com/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://blog.bing0ne.com/apple-touch-icon.png">
+    <link rel="icon" href="https://blog.bing0ne.com/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.59.0-DEV" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://blog.bing0ne.com/index.xml" title="bing0ne Base">
+    
+    
+    <meta property="og:title" content="GSoC Week 3 Summary" />
+<meta property="og:description" content="Summary of Week 3 of the Google Summer of Code" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.bing0ne.com/p/gsoc-week3/" />
+<meta property="article:published_time" content="2019-06-16T21:09:04+08:00" />
+<meta property="article:modified_time" content="2019-06-16T21:09:04+08:00" />
+
+  </head>
+  <body class="single">
+    <header class="header">
+      <nav class="nav">
+        
+        <p class="logo"><a href="https://blog.bing0ne.com">bing0ne Base</a></p>
+        
+        
+        <ul class="menu">
+          
+          <li>
+            <a href="https://blog.bing0ne.com/">Home</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/categories/dev/">Dev</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/categories/eassy/">Eassy</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/categories/gsoc/">GSoC</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/tags/">Tags</a>
+          </li>
+          
+        </ul>
+        
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">GSoC Week 3 Summary</h1>
+    <div class="post-meta">bing0ne · June 16, 2019</div>
+  </header>
+  <div class="post-content"><p>This week is the third week of the Goog Summer of Code. I foucuesd on refactoring metric implementations and API endpoints.</p>
+
+<h2 id="meeting-log">Meeting log</h2>
+
+<p><strong>Date</strong>: 10/06/2019, 11/06/2019, 12/06/2019</p>
+
+<p>There are three meeting in this week. The first one is routine meeting, and the second and the third are meeting about the frontend part.</p>
+
+<p><strong>Summary</strong></p>
+
+<ul>
+<li>Develop unit test for plugin <code>augur_db</code></li>
+<li>Understand how front end work and trying to develop frontend for the metrics impelemted(issues releated is the most interested in curent phase)</li>
+<li>Add helper function to the forntend to adapte to new endpoint scheme</li>
+</ul>
+
+<h2 id="works-done-this-week">Works Done this Week</h2>
+
+<ul>
+<li>Developed unit tests for metric implemetned</li>
+<li>Implemented helper function for the frontend to adapt to new endpoint scheme</li>
+<li>Added unit tests for API endpoints</li>
+</ul>
+
+<h3 id="pull-request-created">Pull Request Created</h3>
+
+<ul>
+<li><a href="https://github.com/chaoss/augur/pull/295">chaoss/augur#295</a></li>
+</ul>
+
+<h2 id="challenges">Challenges</h2>
+
+<ul>
+<li>Vue.js is brand new field for me. I took a very long time to understand how Augur frontend works. Firstly, I misunderstand how frontend part mapping endpint to
+js functions. I belived we should create a new class for <code>repo_group</code>. However, I found we can simply added helper functions into class <code>repo</code> when I started
+to implement it. But the frontend still cann&rsquo;t keep and pass new attributes <code>repo_group_id</code> and <code>repo_id</code>. I need to modify a lot of files to make it work in the future.</li>
+</ul>
+
+<h2 id="plans-for-next-week">Plans for next week</h2>
+
+<ul>
+<li>Make modification on frontend part make it works with new helper function</li>
+<li>Developing a few metrics on the frontend</li>
+</ul></div>
+  
+  <footer class="post-footer">
+    <ul class="post-tags">
+      
+      
+      <li><a href="https://blog.bing0ne.com/tags/gsoc">gsoc</a></li>
+      
+    </ul>
+  </footer>
+  
+  
+  
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_shortname = 'bing0ne';
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 <a href="https://blog.bing0ne.com">bing0ne Base</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+<script src="https://blog.bing0ne.com/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+

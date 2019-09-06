@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ALGO on bing0ne Base</title>
+    <link>https://blog.bing0ne.com/tags/algo/</link>
+    <description>Recent content in ALGO on bing0ne Base</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce.</copyright>
+    <lastBuildDate>Mon, 23 Jul 2018 20:49:30 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.bing0ne.com/tags/algo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>LeetCode 02. Add Two Numbers</title>
+      <link>https://blog.bing0ne.com/p/leetcode-02/</link>
+      <pubDate>Mon, 23 Jul 2018 20:49:30 +0800</pubDate>
+      
+      <guid>https://blog.bing0ne.com/p/leetcode-02/</guid>
+      <description>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list. You may assume the two numbers do not contain any leading zero, except the number 0 itself. Example Input: (2 -&amp;gt; 4 -&amp;gt; 3) + (5 -&amp;gt; 6 -&amp;gt; 4) Output: 7</description>
+    </item>
+    
+    <item>
+      <title>LeetCode 01. TWO SUM</title>
+      <link>https://blog.bing0ne.com/p/leetcode-01/</link>
+      <pubDate>Sun, 22 Jul 2018 16:52:26 +0800</pubDate>
+      
+      <guid>https://blog.bing0ne.com/p/leetcode-01/</guid>
+      <description>&lt;p&gt;这是LeetCode题库中的第一题。一个从数组中找到一对相加等于目标数的数的算法。文中我们使用了两种不同的方法来实现我们的算法。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>红黑二叉查找树</title>
+      <link>https://blog.bing0ne.com/p/br-tree/</link>
+      <pubDate>Fri, 16 Sep 2016 18:26:26 +0800</pubDate>
+      
+      <guid>https://blog.bing0ne.com/p/br-tree/</guid>
+      <description>&lt;p&gt;红黑树的算法如雷贯耳，但鉴于一些原因从来没有去研究实现过。
+红黑树的实质其实是一个2-3树。他相对于 BST 来说更加的扁平。拥有着更好的查找效率。
+对于基于红黑树的符号表的操作的运行时间几乎都是对数级别。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>基本的排序算法</title>
+      <link>https://blog.bing0ne.com/p/basic-sort/</link>
+      <pubDate>Fri, 26 Aug 2016 18:27:24 +0800</pubDate>
+      
+      <guid>https://blog.bing0ne.com/p/basic-sort/</guid>
+      <description>&lt;p&gt;排序是算法领域重要的组成部分，本文将介绍几种重要的排序。
+插入，选择，希尔，归并，快速排序，堆排序等。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>GsoC Week 6 Summary - bing0ne Base</title>
+    
+    <meta name="description" content="This week is the 6th week of Google Summer of Week. I focused on moving frontend to a separate repo and converted javascript to typescript.">
+    <meta name="author" content="bing0ne">
+    
+    <link href="https://blog.bing0ne.com/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://blog.bing0ne.com/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://blog.bing0ne.com/apple-touch-icon.png">
+    <link rel="icon" href="https://blog.bing0ne.com/favicon.ico">
+    
+    <meta name="generator" content="Hugo 0.59.0-DEV" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://blog.bing0ne.com/index.xml" title="bing0ne Base">
+    
+    
+    <meta property="og:title" content="GsoC Week 6 Summary" />
+<meta property="og:description" content="This week is the 6th week of Google Summer of Week. I focused on moving frontend to a separate repo and converted javascript to typescript." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.bing0ne.com/p/gsoc-week6/" />
+<meta property="article:published_time" content="2019-07-07T15:31:02+08:00" />
+<meta property="article:modified_time" content="2019-07-07T15:31:02+08:00" />
+
+  </head>
+  <body class="single">
+    <header class="header">
+      <nav class="nav">
+        
+        <p class="logo"><a href="https://blog.bing0ne.com">bing0ne Base</a></p>
+        
+        
+        <ul class="menu">
+          
+          <li>
+            <a href="https://blog.bing0ne.com/">Home</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/categories/dev/">Dev</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/categories/eassy/">Eassy</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/categories/gsoc/">GSoC</a>
+          </li>
+          
+          <li>
+            <a href="https://blog.bing0ne.com/tags/">Tags</a>
+          </li>
+          
+        </ul>
+        
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">GsoC Week 6 Summary</h1>
+    <div class="post-meta">bing0ne · July 7, 2019</div>
+  </header>
+  <div class="post-content"><p>This week is the 6th week of Google Summer of Week. I focused on moving frontend to a separate repo and converted javascript to typescript.</p>
+
+<h2 id="meeting-log">Meeting Log</h2>
+
+<p>Date: 07/06/2019</p>
+
+<ul>
+<li>Develop a script to pull metrics into <code>chass_metric_status table</code></li>
+</ul>
+
+<h2 id="work-done-this-week">Work Done this Week</h2>
+
+<ul>
+<li><p>Metric Implementation</p>
+
+<ul>
+<li>annual-commit-count-ranked-by-new-repo-in-repo-group</li>
+<li>annual-commit-count-ranked-by-repo-in-repo-group</li>
+<li>annual-lines-of-code-count-ranked-by-repo-in-repo-group</li>
+<li>annual-lines-of-code-count-ranked-by-new-repo-in-repo-group</li>
+</ul></li>
+
+<li><p>Move Frontend to new repo based on Vue-CLI</p>
+
+<ul>
+<li>converted <code>AugurAPI.js</code>, <code>Augur.js</code> and <code>AugurStats.js</code> to Tyepescript</li>
+</ul></li>
+
+<li><p>Metrics Refactored</p>
+
+<ul>
+<li>Refactor all metric API endpoints to include a repo-name field.</li>
+</ul></li>
+</ul>
+
+<h3 id="pull-requests">Pull Requests</h3>
+
+<ul>
+<li><a href="https://github.com/chaoss/augur/pull/317">chaoss/Augur#317</a>: Dev: Refactored the following metric implementations to include &lsquo;repo_name&rsquo;</li>
+<li><a href="https://github.com/chaoss/augur/pull/319">chaoss/Augur#319</a>: Dev: fix API test fail caused by issues_closed_resolution_duration</li>
+<li><a href="https://github.com/chaoss/augur/pull/322">chaoss/Augur#322</a>: Implement Facade metrics in augur_db database</li>
+<li><a href="https://github.com/bing0n3/augur-frontend">bing0n3/Augur-frontend</a>: new frontend repo</li>
+</ul>
+
+<h2 id="challenges-encountered">Challenges Encountered</h2>
+
+<ul>
+<li>How to convert <code>js</code> to <code>ts</code>. And typescript is a new technique for me.</li>
+<li>Let <code>Vue-Cli</code> complie css correctly.</li>
+</ul>
+
+<h2 id="future-work">Future Work</h2>
+
+<ul>
+<li>Add script to pull <code>metirc</code> from chass metric repo.</li>
+<li>More future plans for next week to be decided in the next meeting on Monday, 8th July 2019.</li>
+</ul></div>
+  
+  <footer class="post-footer">
+    <ul class="post-tags">
+      
+      
+      <li><a href="https://blog.bing0ne.com/tags/gsoc">GsoC</a></li>
+      
+    </ul>
+  </footer>
+  
+  
+  
+  
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_shortname = 'bing0ne';
+    (function() {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>
+    Please enable JavaScript to view the
+    <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+  </noscript>
+  
+  
+  
+</article>
+
+</main>
+<footer class="footer">
+  <span>&copy; 2019 <a href="https://blog.bing0ne.com">bing0ne Base</a></span>
+  <span>&middot;</span>
+  <span>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</span>
+  <span>&middot;</span>
+  <span>Theme️ <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper</a></span>
+</footer>
+<script src="https://blog.bing0ne.com/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
+
