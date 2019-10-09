@@ -1,97 +1,102 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>决策树算法 --ID3 - bing0ne Base</title><meta name=description content=决策树分类法是一种简单但却广泛使用的分类技术。它相较于kNN算法，能够展示给我们更多关于平均实例样本和典型实力样本的特征。决策树是一种使用概率测量方法处理分类问题的算法。><meta name=author content=bing0ne><link href=https://blog.bing0ne.com/an-old-hope.min.css rel=stylesheet><link href=https://blog.bing0ne.com/style.css rel=stylesheet><link rel=apple-touch-icon href=https://blog.bing0ne.com/apple-touch-icon.png><link rel=icon href=https://blog.bing0ne.com/favicon.ico><meta name=generator content="Hugo 0.58.2"><link rel=alternate type=application/atom+xml href=https://blog.bing0ne.com/index.xml title="bing0ne Base"><meta property=og:title content="决策树算法 --ID3"><meta property=og:description content=决策树分类法是一种简单但却广泛使用的分类技术。它相较于kNN算法，能够展示给我们更多关于平均实例样本和典型实力样本的特征。决策树是一种使用概率测量方法处理分类问题的算法。><meta property=og:type content=article><meta property=og:url content=https://blog.bing0ne.com/p/id3-algorithm/><meta property=article:published_time content=2016-12-02T22:57:00+08:00><meta property=article:modified_time content=2016-12-02T22:57:00+08:00></head><body class=single><header class=header><nav class=nav><p class=logo><a href=https://blog.bing0ne.com>bing0ne Base</a></p><ul class=menu><li><a href=https://blog.bing0ne.com/>Home</a></li><li><a href=https://blog.bing0ne.com/categories/dev/>Dev</a></li><li><a href=https://blog.bing0ne.com/categories/eassy/>Eassy</a></li><li><a href=https://blog.bing0ne.com/categories/gsoc/>GSoC</a></li><li><a href=https://blog.bing0ne.com/tags/>Tags</a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>决策树算法 --ID3</h1><div class=post-meta>bing0ne · December 2, 2016</div></header><div class=post-content><p>决策树分类法是一种简单但却广泛使用的分类技术。它相较于kNN算法，能够展示给我们更多关于平均实例样本和典型实力样本的特征。决策树是一种使用概率测量方法处理分类问题的算法。</p><h1 id=如何建立决策树>如何建立决策树</h1><p>在原则上，对于一个给定的数据集，我们所可以构造的决策树的数目达到了指数级。因此，找到一个最佳决策树在计算上是不可行的。但尽管如此，人们还是找到了一些方法，去寻找具有一定的准确率的次最优决策树。我们采取贪心的策略，在每一次选择划分数据的属性时，选择局部最优的属性来构造决策。这就是Hunt算法。Hunt算法是一种通过将训练集划分成子集的一种以递归方法建立决策树的算法。</p><h1 id=id3算法的概述>ID3算法的概述</h1><p>对于一个决策树算法最关键的一点，就是如何选择特征作为划分数据集的标准。ID3算法就是一个选择信息增益作为其划分依据的算法。它选择信息增益最大的特征来对数据集进行划分。
-还有一点ID3算法需要解决的就是如何判定划分的结束。这有两种情况，一种是划分出来的所有类属于同一个类。第二种情况，便是没有属性可以用来划分。</p><h1 id=划分数据的依据>划分数据的依据</h1><p>ID3算法是依靠信息增益作为衡量标准的决策树算法。</p><h2 id=信息熵-entropy>信息熵(Entropy)</h2><p>熵的概念主要是指信息的混乱程度，变量的不确定性越大，熵的值也就越大，熵的公式可以表示为:</p><p>$$Entropy(t): -\sum_{i=0}^{c-1} p(i|t) log_2p(i|t)$$</p><h2 id=信息增益-information-gain>信息增益（Information gain）</h2><p>信息增益指的是划分前后熵的变化，可以用下面的公式表示：</p><p>$$ InfoGain: I(parent) - \sum_{j =1}^{k} \frac{N(v_j)}{N} I(v_j)$$</p><p>其中k表示划分后所具有的特征数目，N表示条目数量。I是熵。</p><h1 id=id3算法实现>ID3算法实现</h1><h2 id=计算熵>计算熵</h2><p>首先统计出有多少个特征，然后计算出每个特征的概率，并按照计算熵的公式计算。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>calcEnt</span>(dataSet):
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content=bing0ne><meta name=description content=决策树分类法是一种简单但却广泛使用的分类技术。它相较于kNN算法，能够展示给我们更多关于平均实例样本和典型实力样本的特征。决策树是一种使用概率测量方法处理分类问题的算法。><meta name=keywords content=blog,bing0ne,gopher,gsoc><link rel=canonical href=https://blog.bing0ne.com/p/id3-algorithm/><title>决策树算法 --ID3 &middot; bing0ne Base</title><link rel="shortcut icon" href=https://blog.bing0ne.com/images/favicon.ico><link rel=stylesheet href=https://blog.bing0ne.com/css/animate.min.css><link rel=stylesheet href=https://blog.bing0ne.com/css/remixicon.css><link rel=stylesheet href=https://blog.bing0ne.com/css/zozo.css><link rel=stylesheet href=https://blog.bing0ne.com/css/highlight.css></head><body><div class="main animated"><div class="nav_container animated fadeInDown"><div class=site_nav id=site_nav><ul><li><a href=/>Home</a></li><li><a href=/posts/>Archive</a></li><li><a href=/tags/>Tags</a></li></ul></div><div class=menu_icon><a id=menu_icon><i class=remixicon-links-line></i></a></div></div><div class="header animated fadeInDown"><div class=site_title_container><div class=site_title><h1><a href=https://blog.bing0ne.com><span>bing0ne Base</span>
+<img src=https://blog.bing0ne.com/images/logo.svg></a></h1></div><div class=description><p class=sub_title>Neverland</p><div class=my_socials><a href=https://github.com/bing0n3 title=github target=_blank><i class=remixicon-github-fill></i></a><a href=https://instagram.com/bing0n3 title=instagram target=_blank><i class=remixicon-instagram-fill></i></a><a href=https://twitter.com/bing0n3 title=twitter target=_blank><i class=remixicon-twitter-fill></i></a><a href=https://blog.bing0ne.com/index.xml type=application/rss+xml title=rss target=_blank><i class=remixicon-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animated fadeInDown"><div class="post_title post_detail_title"><h2><a href=/p/id3-algorithm/>决策树算法 --ID3</a></h2><span class=date>2016.12.02</span></div><div class="post_content markdown"><p>决策树分类法是一种简单但却广泛使用的分类技术。它相较于kNN算法，能够展示给我们更多关于平均实例样本和典型实力样本的特征。决策树是一种使用概率测量方法处理分类问题的算法。</p><h1 id=如何建立决策树>如何建立决策树</h1><p>在原则上，对于一个给定的数据集，我们所可以构造的决策树的数目达到了指数级。因此，找到一个最佳决策树在计算上是不可行的。但尽管如此，人们还是找到了一些方法，去寻找具有一定的准确率的次最优决策树。我们采取贪心的策略，在每一次选择划分数据的属性时，选择局部最优的属性来构造决策。这就是Hunt算法。Hunt算法是一种通过将训练集划分成子集的一种以递归方法建立决策树的算法。</p><h1 id=id3算法的概述>ID3算法的概述</h1><p>对于一个决策树算法最关键的一点，就是如何选择特征作为划分数据集的标准。ID3算法就是一个选择信息增益作为其划分依据的算法。它选择信息增益最大的特征来对数据集进行划分。
+还有一点ID3算法需要解决的就是如何判定划分的结束。这有两种情况，一种是划分出来的所有类属于同一个类。第二种情况，便是没有属性可以用来划分。</p><h1 id=划分数据的依据>划分数据的依据</h1><p>ID3算法是依靠信息增益作为衡量标准的决策树算法。</p><h2 id=信息熵-entropy>信息熵(Entropy)</h2><p>熵的概念主要是指信息的混乱程度，变量的不确定性越大，熵的值也就越大，熵的公式可以表示为:</p><p>$$Entropy(t): -\sum_{i=0}^{c-1} p(i|t) log_2p(i|t)$$</p><h2 id=信息增益-information-gain>信息增益（Information gain）</h2><p>信息增益指的是划分前后熵的变化，可以用下面的公式表示：</p><p>$$ InfoGain: I(parent) - \sum_{j =1}^{k} \frac{N(v_j)}{N} I(v_j)$$</p><p>其中k表示划分后所具有的特征数目，N表示条目数量。I是熵。</p><h1 id=id3算法实现>ID3算法实现</h1><h2 id=计算熵>计算熵</h2><p>首先统计出有多少个特征，然后计算出每个特征的概率，并按照计算熵的公式计算。</p><pre><code class=language-python>def calcEnt(dataSet):
     numEntries: len(dataSet)
     labelsCount: {} 
-    <span style=color:#75715e>#计算每个label对应的条目数量</span>
-    <span style=color:#66d9ef>for</span> featureVec <span style=color:#f92672>in</span> dataSet:
-        currentLable: featureVec[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>]
-        labelsCount[currentLable]: labelsCount<span style=color:#f92672>.</span>get(currentLable, <span style=color:#ae81ff>0</span>) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
-    ent: <span style=color:#ae81ff>0.0</span>
-    <span style=color:#75715e># 计算熵</span>
-    <span style=color:#66d9ef>for</span> key <span style=color:#f92672>in</span> labelsCount:
-        prob: labelsCount<span style=color:#f92672>.</span>get(key) <span style=color:#f92672>/</span> float(numEntries)
-        ent <span style=color:#f92672>-=</span> prob <span style=color:#f92672>*</span> log(prob, <span style=color:#ae81ff>2</span>)
-    <span style=color:#66d9ef>return</span> ent</code></pre></div><h2 id=划分数据集>划分数据集</h2><p>根据输入的特征类别和该特征的值从数据集划分出一个子数据集。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>splitDataSet</span>(dataSet, axis, value):
+    #计算每个label对应的条目数量
+    for featureVec in dataSet:
+        currentLable: featureVec[-1]
+        labelsCount[currentLable]: labelsCount.get(currentLable, 0) + 1
+    ent: 0.0
+    # 计算熵
+    for key in labelsCount:
+        prob: labelsCount.get(key) / float(numEntries)
+        ent -= prob * log(prob, 2)
+    return ent
+</code></pre><h2 id=划分数据集>划分数据集</h2><p>根据输入的特征类别和该特征的值从数据集划分出一个子数据集。</p><pre><code class=language-python>def splitDataSet(dataSet, axis, value):
     retDataSet: []
-    <span style=color:#66d9ef>for</span> data <span style=color:#f92672>in</span> dataSet:
-        <span style=color:#66d9ef>if</span> data[axis] <span style=color:#f92672>==</span> value:
-            <span style=color:#75715e># 将符合值且去除axis的特征加入到返回的List中</span>
+    for data in dataSet:
+        if data[axis] == value:
+            # 将符合值且去除axis的特征加入到返回的List中
             reducedFeature: data[:axis]
-            reducedFeature<span style=color:#f92672>.</span>extend(data[axis <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>:])
-            retDataSet<span style=color:#f92672>.</span>append(reducedFeature)
-    <span style=color:#66d9ef>return</span> retDataSet</code></pre></div><h2 id=选择信息增益最大的划分特征>选择信息增益最大的划分特征</h2><p>从数据集中选择出当前最优的划分特征。根据信息增益的计算公式。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>chooseBestFeatureToSplit</span>(dataSet):
-<span style=color:#e6db74>&#39;&#39;&#39;
-</span><span style=color:#e6db74>return the index of the best feature
-</span><span style=color:#e6db74>&#39;&#39;&#39;</span>
-numFeatures: len(dataSet[<span style=color:#ae81ff>0</span>]) <span style=color:#f92672>-</span> <span style=color:#ae81ff>1</span>
+            reducedFeature.extend(data[axis + 1:])
+            retDataSet.append(reducedFeature)
+    return retDataSet
+</code></pre><h2 id=选择信息增益最大的划分特征>选择信息增益最大的划分特征</h2><p>从数据集中选择出当前最优的划分特征。根据信息增益的计算公式。</p><pre><code class=language-python>def chooseBestFeatureToSplit(dataSet):
+'''
+return the index of the best feature
+'''
+numFeatures: len(dataSet[0]) - 1
 numDataSet: len(dataSet)
-<span style=color:#75715e># 计算未划分时的熵</span>
+# 计算未划分时的熵
 baseEntropy: calcEnt(dataSet)
-bestInoGain: <span style=color:#ae81ff>0.0</span>
-bestFeature: <span style=color:#ae81ff>0.0</span>
-<span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(numFeatures):
-    <span style=color:#75715e># 得到第i个特征对应的值们</span>
-    valsList: [data[i] <span style=color:#66d9ef>for</span> data <span style=color:#f92672>in</span> dataSet]
+bestInoGain: 0.0
+bestFeature: 0.0
+for i in range(numFeatures):
+    # 得到第i个特征对应的值们
+    valsList: [data[i] for data in dataSet]
     uniqueVals: set(valsList)
-    newEntropy: <span style=color:#ae81ff>0.0</span>
-    <span style=color:#75715e># 计算每个值情况下的熵以及该情况发生的概率</span>
-    <span style=color:#66d9ef>for</span> val <span style=color:#f92672>in</span> uniqueVals:
+    newEntropy: 0.0
+    # 计算每个值情况下的熵以及该情况发生的概率
+    for val in uniqueVals:
         subDataSet: splitDataSet(dataSet, i, val)
-        prob: len(subDataSet) <span style=color:#f92672>/</span> float(numDataSet)
-        newEntropy <span style=color:#f92672>+=</span> prob <span style=color:#f92672>*</span> calcEnt(subDataSet)
-    infoGain: float(baseEntropy <span style=color:#f92672>-</span> newEntropy)
-    <span style=color:#66d9ef>if</span>(infoGain <span style=color:#f92672>&gt;</span> bestInoGain):
+        prob: len(subDataSet) / float(numDataSet)
+        newEntropy += prob * calcEnt(subDataSet)
+    infoGain: float(baseEntropy - newEntropy)
+    if(infoGain &gt; bestInoGain):
         bestInoGain: infoGain
         bestFeature: i
-<span style=color:#66d9ef>return</span> bestFeatur</code></pre></div><h2 id=选择最多的类别>选择最多的类别</h2><p>如上文所述，我们有两种不同的结束判定情况。
-这里我们介绍的是当数据集中没有可划分的特征，但是留下来了不同的类。我们为了输出方便，从中选择数目最多的类输出</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>majorityCnt</span>(classList):
+return bestFeatur
+
+</code></pre><h2 id=选择最多的类别>选择最多的类别</h2><p>如上文所述，我们有两种不同的结束判定情况。
+这里我们介绍的是当数据集中没有可划分的特征，但是留下来了不同的类。我们为了输出方便，从中选择数目最多的类输出</p><pre><code class=language-python>def majorityCnt(classList):
     classCount: {}
-    <span style=color:#66d9ef>for</span> vec <span style=color:#f92672>in</span> classList:
-        classCount[vec]: classCount<span style=color:#f92672>.</span>get(vec, <span style=color:#ae81ff>0</span>) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+    for vec in classList:
+        classCount[vec]: classCount.get(vec, 0) + 1
     sortedClassCount: sorted(
-        classCount<span style=color:#f92672>.</span>items(), key<span style=color:#f92672>=</span>operator<span style=color:#f92672>.</span>itemgetter(<span style=color:#ae81ff>1</span>), reverse<span style=color:#f92672>=</span>True)
-    <span style=color:#66d9ef>return</span> sortedClassCount[<span style=color:#ae81ff>0</span>][<span style=color:#ae81ff>0</span>]</code></pre></div><h2 id=构造树>构造树</h2><p>当我们完成前面那些构造树的函数后，我们便可以正式构造我们的函数。这是一个递归算法。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>createTree</span>(dataSet, labels):
-<span style=color:#e6db74>&#39;&#39;&#39;
-</span><span style=color:#e6db74>label 用于辅助构造树，提供特征的名字
-</span><span style=color:#e6db74>&#39;&#39;&#39;</span>
-    <span style=color:#75715e># 每个数据对应的类别</span>
-    classList: [subData[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>] <span style=color:#66d9ef>for</span> subData <span style=color:#f92672>in</span> dataSet]
-    <span style=color:#75715e># 结束情况一 只有同一类的数据</span>
-    <span style=color:#66d9ef>if</span> classList<span style=color:#f92672>.</span>count(classList[<span style=color:#ae81ff>0</span>]) <span style=color:#f92672>==</span> len(classList):
-        <span style=color:#66d9ef>return</span> classList[<span style=color:#ae81ff>0</span>]
-    <span style=color:#75715e># 结束情况二 没有可以划分的特征</span>
-    <span style=color:#66d9ef>if</span> len(dataSet[<span style=color:#ae81ff>0</span>]) <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
-        <span style=color:#66d9ef>return</span> majorityCnt(classList)
-    <span style=color:#75715e># 选择最佳的划分特征</span>
+        classCount.items(), key=operator.itemgetter(1), reverse=True)
+    return sortedClassCount[0][0]
+</code></pre><h2 id=构造树>构造树</h2><p>当我们完成前面那些构造树的函数后，我们便可以正式构造我们的函数。这是一个递归算法。</p><pre><code class=language-python>def createTree(dataSet, labels):
+'''
+label 用于辅助构造树，提供特征的名字
+'''
+    # 每个数据对应的类别
+    classList: [subData[-1] for subData in dataSet]
+    # 结束情况一 只有同一类的数据
+    if classList.count(classList[0]) == len(classList):
+        return classList[0]
+    # 结束情况二 没有可以划分的特征
+    if len(dataSet[0]) == 1:
+        return majorityCnt(classList)
+    # 选择最佳的划分特征
     bestFeature: chooseBestFeatureToSplit(dataSet)
     bestFeatureLabel: labels[bestFeature]
     myTree: {bestFeatureLabel: {}}
-    <span style=color:#75715e># 删除已被选择的特征</span>
-    <span style=color:#66d9ef>del</span>(labels[bestFeature])
-    <span style=color:#75715e># 得到用于划分的特征对应的值们</span>
-    featureVals: [example[bestFeature] <span style=color:#66d9ef>for</span> example <span style=color:#f92672>in</span> dataSet]
+    # 删除已被选择的特征
+    del(labels[bestFeature])
+    # 得到用于划分的特征对应的值们
+    featureVals: [example[bestFeature] for example in dataSet]
     uniqueVals: set(featureVals)
-    <span style=color:#75715e># 对每一个值 递归调用createTree，来继续划分数据集</span>
-    <span style=color:#66d9ef>for</span> values <span style=color:#f92672>in</span> uniqueVals:
-        <span style=color:#75715e># 赋值给subLabels，而不是引用</span>
+    # 对每一个值 递归调用createTree，来继续划分数据集
+    for values in uniqueVals:
+        # 赋值给subLabels，而不是引用
         subLabels: labels[:]
         myTree[bestFeatureLabel][values]: createTree(
             splitDataSet(dataSet, bestFeature, values), subLabels)
-    <span style=color:#66d9ef>return</span> myTree</code></pre></div><h2 id=分类>分类</h2><p>当构造完树后，我们就能用树来进行分类。这里的<code>inputree</code>参数便是我们前面构造的树。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>classify</span>(inputTree, featureLabels, testVec):
-    firstLabel: list(inputTree<span style=color:#f92672>.</span>keys())[<span style=color:#ae81ff>0</span>]
-    secondTree: inputTree<span style=color:#f92672>.</span>get(firstLabel)   <span style=color:#75715e># seconTree 就是firstLabel对应的value</span>
-    featureIndex: featureLabels<span style=color:#f92672>.</span>index(firstLabel)
-    classLabel: <span style=color:#e6db74>&#39;&#39;</span>
-    <span style=color:#66d9ef>for</span> key <span style=color:#f92672>in</span> secondTree:
+    return myTree
+</code></pre><h2 id=分类>分类</h2><p>当构造完树后，我们就能用树来进行分类。这里的<code>inputree</code>参数便是我们前面构造的树。</p><pre><code class=language-python>def classify(inputTree, featureLabels, testVec):
+    firstLabel: list(inputTree.keys())[0]
+    secondTree: inputTree.get(firstLabel)   # seconTree 就是firstLabel对应的value
+    featureIndex: featureLabels.index(firstLabel)
+    classLabel: ''
+    for key in secondTree:
 
-        <span style=color:#66d9ef>if</span> testVec[featureIndex] <span style=color:#f92672>==</span> key:
-            <span style=color:#66d9ef>if</span> type(secondTree[key])<span style=color:#f92672>.</span>__name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;dict&#39;</span>:
+        if testVec[featureIndex] == key:
+            if type(secondTree[key]).__name__ == 'dict':
                 classLabel: classify(secondTree[key], featureLabels, testVec)
-            <span style=color:#66d9ef>else</span>:
+            else:
                 classLabel: secondTree[key]
-    <span style=color:#66d9ef>return</span> classLabel</code></pre></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://blog.bing0ne.com/tags/ml>ML</a></li></ul></footer><div id=disqus_thread></div><script>var disqus_shortname='bing0ne';(function(){var d=document,s=d.createElement('script');s.src='https://'+disqus_shortname+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the
-<a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></article></main><footer class=footer><span>&copy; 2019 <a href=https://blog.bing0ne.com>bing0ne Base</a></span>
-<span>&middot;</span>
-<span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
-<span>&middot;</span>
-<span>Theme️ <a href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>Paper</a></span></footer><script src=https://blog.bing0ne.com/highlight.min.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
+    return classLabel
+</code></pre></div><div class=post_footer><div class=meta><div class=info><span class="field tags"><i class=remixicon-stack-line></i><a href=https://blog.bing0ne.com/tags/ml/>ML</a></span></div></div></div></div></div></div><a id=back_to_top href=# class=back_to_top><span>△</span></a></div><footer class=footer><div class=powered_by><a href=https://zeuk.me>Designed by Zeuk,</a>
+<a href=http://www.gohugo.io/>Proudly published with Hugo</a></div><div class=footer_slogan><span>Share Memory by Communication</span></div></footer><script src=https://blog.bing0ne.com/js/jquery-3.3.1.min.js></script><script src=https://blog.bing0ne.com/js/zozo.js></script><script src=https://blog.bing0ne.com/js/highlight.pack.js></script><link href=https://blog.bing0ne.com/css/fancybox.min.css rel=stylesheet><script src=https://blog.bing0ne.com/js/fancybox.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=text/javascript async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({tex2jax:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\[\[','\]\]']],processEscapes:true,processEnvironments:true,skipTags:['script','noscript','style','textarea','pre'],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["AMSmath.js","AMSsymbols.js"]}}});MathJax.Hub.Queue(function(){var all=MathJax.Hub.getAllJax(),i;for(i=0;i<all.length;i+=1){all[i].SourceElement().parentNode.className+=' has-jax';}});</script><style>code.has-jax{font:inherit;font-size:100%;background:inherit;border:inherit;color:#515151}</style><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-71832126-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
+var d=document,s=d.createElement('script');s.async=true;s.src='//'+"bing0ne"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></body></html>

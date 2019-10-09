@@ -1,0 +1,171 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content=bing0ne><meta name=description content="Program Description Given an integer matrix, find the length of the longest increasing path.
+From each cell, you can either move to four directions: left, right, up or down. You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed)."><meta name=keywords content=blog,bing0ne,gopher,gsoc><link rel=canonical href=https://blog.bing0ne.com/posts/leetcode-329/><title>[Leetcode] 329. Longest Increasing Path in a Matrix &middot; bing0ne Base</title><link rel="shortcut icon" href=https://blog.bing0ne.com/images/favicon.ico><link rel=stylesheet href=https://blog.bing0ne.com/css/animate.min.css><link rel=stylesheet href=https://blog.bing0ne.com/css/remixicon.css><link rel=stylesheet href=https://blog.bing0ne.com/css/zozo.css><link rel=stylesheet href=https://blog.bing0ne.com/css/highlight.css></head><body><div class="main animated"><div class="nav_container animated fadeInDown"><div class=site_nav id=site_nav><ul><li><a href=/>Home</a></li><li><a href=/posts/>Archive</a></li><li><a href=/tags/>Tags</a></li></ul></div><div class=menu_icon><a id=menu_icon><i class=remixicon-links-line></i></a></div></div><div class="header animated fadeInDown"><div class=site_title_container><div class=site_title><h1><a href=https://blog.bing0ne.com><span>bing0ne Base</span>
+<img src=https://blog.bing0ne.com/images/logo.svg></a></h1></div><div class=description><p class=sub_title>Neverland</p><div class=my_socials><a href=https://github.com/bing0n3 title=github target=_blank><i class=remixicon-github-fill></i></a><a href=https://instagram.com/bing0n3 title=instagram target=_blank><i class=remixicon-instagram-fill></i></a><a href=https://twitter.com/bing0n3 title=twitter target=_blank><i class=remixicon-twitter-fill></i></a><a href=https://blog.bing0ne.com/index.xml type=application/rss+xml title=rss target=_blank><i class=remixicon-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animated fadeInDown"><div class="post_title post_detail_title"><h2><a href=/posts/leetcode-329/>[Leetcode] 329. Longest Increasing Path in a Matrix</a></h2><span class=date>2019.09.06</span></div><div class="post_content markdown"><h2 id=program-description>Program Description</h2><p>Given an integer matrix, find the length of the longest increasing path.</p><p>From each cell, you can either move to four directions: left, right, up or down. You may NOT move diagonally or move outside of the boundary (i.e. wrap-around is not allowed).</p><h3 id=example-1>Example 1:</h3><pre><code>Input: nums = 
+[
+  [9,9,4],
+  [6,6,8],
+  [2,1,1]
+] 
+Output: 4 
+Explanation: The longest increasing path is [1, 2, 6, 9].
+</code></pre><h3 id=example-2>Example 2:</h3><pre><code>Input: nums = 
+[
+  [3,4,5],
+  [3,2,6],
+  [2,2,1]
+] 
+Output: 4 
+Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is not allowed.
+</code></pre><h2 id=solution>Solution</h2><h3 id=backtracking>Backtracking</h3><p>My first idea about this problem is backtracking. Iterate all element in matrix to find all possible path and get the longest one. This method works when matrix is not large, However it reached <em>Time Limit Exceeded</em> in larger matrix in test case.</p><pre><code class=language-go>func longestIncreasingPath(matrix [][]int) int {
+
+	if len(matrix) == 0 {
+		return 0
+	}
+	//backtracking
+	maxCnt := 0
+	var res int
+	for i := 0; i &lt; len(matrix); i++ {
+		for j := 0; j &lt; len(matrix[0]); j++ {
+			res = dfs(matrix, i, j, -1)
+			if res &gt; maxCnt {
+				maxCnt = res
+			}
+		}
+	}
+
+	return maxCnt
+
+}
+
+func dfs(matrix [][]int, i, j int, prv int) int {
+	// return the largest one from four direction
+	if matrix[i][j] == -1 {
+		return 0
+	}
+
+	if matrix[i][j] &lt;= prv {
+		return 0
+	}
+
+	tmp := matrix[i][j]
+	matrix[i][j] = -1
+
+	// is boarder？
+	up, down, right, left := 0, 0, 0, 0
+
+	if i+1 &lt; len(matrix) {
+		up = dfs(matrix, i+1, j, tmp)
+	}
+	if i-1 &gt;= 0 {
+		down = dfs(matrix, i-1, j, tmp)
+	}
+
+	if j+1 &lt; len(matrix[0]) {
+		right = dfs(matrix, i, j+1, tmp)
+	}
+
+	if j-1 &gt;= 0 {
+		left = dfs(matrix, i, j-1, tmp)
+	}
+
+	matrix[i][j] = tmp
+
+	return max(left, max(down, max(right, up))) + 1
+}
+
+func max(a, b int) int {
+	if a &gt; b {
+		return a
+	} else {
+		return b
+	}
+}
+</code></pre><h3 id=dp>DP</h3><p>To avoid this problem, we can use dynamic programing method and the core things is that we don't need to care vistied array because we need a increasing path. It is impossible to access a element twice in a increasing path. So we can use memorization to optimize our backtracking method.</p><pre><code class=language-go>func longestIncreasingPath(matrix [][]int) int {
+    
+    if len(matrix) == 0 {
+        return 0
+    }
+    //backtracking
+    maxCnt := 0
+    
+    var res int
+    
+    // memorization 
+    dp := [][]int{}
+    for i:= 0; i &lt; len(matrix); i++ {
+        dp = append(dp, []int{})
+        for j := 0; j &lt; len(matrix[0]); j++ {
+            dp[i] = append(dp[i], 0)
+        }
+    }
+    
+    for i:= 0; i &lt; len(matrix); i++ {
+        for j := 0; j &lt; len(matrix[0]); j++ {
+            res = dfs(matrix, dp, i, j)
+            if res &gt; maxCnt {
+                maxCnt = res
+            }
+        }
+    }
+    
+    return maxCnt
+    
+}
+
+func dfs(matrix [][]int, dp [][]int, i, j int) int {
+    // return the largest one from four direction
+    if dp[i][j] != 0 {
+        return dp[i][j]
+    }
+    
+    // is boarder？
+    up, down, right, left := 0, 0, 0, 0
+    
+    if i + 1 &lt; len(matrix) {
+        if matrix[i+1][j] &lt;= matrix[i][j] {
+            up = 0
+        } else {
+            up = dfs(matrix, dp, i+1, j)
+        }
+    }
+    if i - 1 &gt;= 0 {
+        if matrix[i-1][j] &lt;= matrix[i][j] {
+            down = 0
+        } else {
+            down = dfs(matrix, dp, i-1, j)
+        }
+    }
+    
+    if j + 1 &lt; len(matrix[0]) {
+        if matrix[i][j+1] &lt;= matrix[i][j] {
+            right = 0
+        } else {
+            right = dfs(matrix, dp, i, j + 1)
+        }
+        
+    }
+    
+    if j - 1 &gt;= 0 {
+        if matrix[i][j-1] &lt;= matrix[i][j] {
+            left = 0
+        } else {
+            left = dfs(matrix, dp, i, j - 1)
+        }
+    }
+    
+    dp[i][j] = max(left, max(down, max(right, up))) + 1 
+    
+    return dp[i][j]
+}
+
+
+func max(a, b int)int {
+    if a &gt; b {
+        return a
+    } else {
+        return b
+    }
+}
+</code></pre></div><div class=post_footer><div class=meta><div class=info><span class="field tags"><i class=remixicon-stack-line></i><a href=https://blog.bing0ne.com/tags/leetcode/>LeetCode</a></span></div></div></div></div></div></div><a id=back_to_top href=# class=back_to_top><span>△</span></a></div><footer class=footer><div class=powered_by><a href=https://zeuk.me>Designed by Zeuk,</a>
+<a href=http://www.gohugo.io/>Proudly published with Hugo</a></div><div class=footer_slogan><span>Share Memory by Communication</span></div></footer><script src=https://blog.bing0ne.com/js/jquery-3.3.1.min.js></script><script src=https://blog.bing0ne.com/js/zozo.js></script><script src=https://blog.bing0ne.com/js/highlight.pack.js></script><link href=https://blog.bing0ne.com/css/fancybox.min.css rel=stylesheet><script src=https://blog.bing0ne.com/js/fancybox.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=text/javascript async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({tex2jax:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\[\[','\]\]']],processEscapes:true,processEnvironments:true,skipTags:['script','noscript','style','textarea','pre'],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["AMSmath.js","AMSsymbols.js"]}}});MathJax.Hub.Queue(function(){var all=MathJax.Hub.getAllJax(),i;for(i=0;i<all.length;i+=1){all[i].SourceElement().parentNode.className+=' has-jax';}});</script><style>code.has-jax{font:inherit;font-size:100%;background:inherit;border:inherit;color:#515151}</style><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-71832126-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
+var d=document,s=d.createElement('script');s.async=true;s.src='//'+"bing0ne"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></body></html>

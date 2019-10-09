@@ -1,50 +1,50 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><title>基本的排序算法 - bing0ne Base</title><meta name=description content="排序是算法领域重要的组成部分，本文将介绍几种重要的排序。
-插入，选择，希尔，归并，快速排序，堆排序等。"><meta name=author content=bing0ne><link href=https://blog.bing0ne.com/an-old-hope.min.css rel=stylesheet><link href=https://blog.bing0ne.com/style.css rel=stylesheet><link rel=apple-touch-icon href=https://blog.bing0ne.com/apple-touch-icon.png><link rel=icon href=https://blog.bing0ne.com/favicon.ico><meta name=generator content="Hugo 0.58.2"><link rel=alternate type=application/atom+xml href=https://blog.bing0ne.com/index.xml title="bing0ne Base"><meta property=og:title content=基本的排序算法><meta property=og:description content="排序是算法领域重要的组成部分，本文将介绍几种重要的排序。
-插入，选择，希尔，归并，快速排序，堆排序等。"><meta property=og:type content=article><meta property=og:url content=https://blog.bing0ne.com/p/basic-sort/><meta property=article:published_time content=2016-08-26T18:27:24+08:00><meta property=article:modified_time content=2016-08-26T18:27:24+08:00></head><body class=single><header class=header><nav class=nav><p class=logo><a href=https://blog.bing0ne.com>bing0ne Base</a></p><ul class=menu><li><a href=https://blog.bing0ne.com/>Home</a></li><li><a href=https://blog.bing0ne.com/categories/dev/>Dev</a></li><li><a href=https://blog.bing0ne.com/categories/eassy/>Eassy</a></li><li><a href=https://blog.bing0ne.com/categories/gsoc/>GSoC</a></li><li><a href=https://blog.bing0ne.com/tags/>Tags</a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>基本的排序算法</h1><div class=post-meta>bing0ne · August 26, 2016</div></header><div class=post-content><p>排序是算法领域重要的组成部分，本文将介绍几种重要的排序。
-插入，选择，希尔，归并，快速排序，堆排序等。</p><p>下面的排序算法都在排序类模板下实现。</p><p><strong>模板如下</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> SortExample {
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content=bing0ne><meta name=description content="排序是算法领域重要的组成部分，本文将介绍几种重要的排序。 插入，选择，希尔，归并，快速排序，堆排序等。"><meta name=keywords content=blog,bing0ne,gopher,gsoc><link rel=canonical href=https://blog.bing0ne.com/p/basic-sort/><title>基本的排序算法 &middot; bing0ne Base</title><link rel="shortcut icon" href=https://blog.bing0ne.com/images/favicon.ico><link rel=stylesheet href=https://blog.bing0ne.com/css/animate.min.css><link rel=stylesheet href=https://blog.bing0ne.com/css/remixicon.css><link rel=stylesheet href=https://blog.bing0ne.com/css/zozo.css><link rel=stylesheet href=https://blog.bing0ne.com/css/highlight.css></head><body><div class="main animated"><div class="nav_container animated fadeInDown"><div class=site_nav id=site_nav><ul><li><a href=/>Home</a></li><li><a href=/posts/>Archive</a></li><li><a href=/tags/>Tags</a></li></ul></div><div class=menu_icon><a id=menu_icon><i class=remixicon-links-line></i></a></div></div><div class="header animated fadeInDown"><div class=site_title_container><div class=site_title><h1><a href=https://blog.bing0ne.com><span>bing0ne Base</span>
+<img src=https://blog.bing0ne.com/images/logo.svg></a></h1></div><div class=description><p class=sub_title>Neverland</p><div class=my_socials><a href=https://github.com/bing0n3 title=github target=_blank><i class=remixicon-github-fill></i></a><a href=https://instagram.com/bing0n3 title=instagram target=_blank><i class=remixicon-instagram-fill></i></a><a href=https://twitter.com/bing0n3 title=twitter target=_blank><i class=remixicon-twitter-fill></i></a><a href=https://blog.bing0ne.com/index.xml type=application/rss+xml title=rss target=_blank><i class=remixicon-rss-fill></i></a></div></div></div></div><div class=content><div class=post_page><div class="post animated fadeInDown"><div class="post_title post_detail_title"><h2><a href=/p/basic-sort/>基本的排序算法</a></h2><span class=date>2016.08.26</span></div><div class="post_content markdown"><p>排序是算法领域重要的组成部分，本文将介绍几种重要的排序。
+插入，选择，希尔，归并，快速排序，堆排序等。</p><p>下面的排序算法都在排序类模板下实现。</p><p><strong>模板如下</strong></p><pre><code class=language-java>public class SortExample {
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
+    public static void sort(Comparable[] a) {
 
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>less</span>(Comparable <span style=color:#a6e22e>v</span>, Comparable <span style=color:#a6e22e>w</span>) {
-        <span style=color:#66d9ef>return</span> v.<span style=color:#a6e22e>compareTo</span>(w) <span style=color:#f92672>&lt;</span> 0;
+    public static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) &lt; 0;
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>exch</span>(Comparable[] <span style=color:#a6e22e>a</span>,<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span>) {
-        Comparable <span style=color:#a6e22e>t</span> <span style=color:#f92672>=</span> a[i];
-        a[i] <span style=color:#f92672>=</span> a[j];
-        a[j] <span style=color:#f92672>=</span> t;
+    public static void exch(Comparable[] a,int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>show</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        <span style=color:#66d9ef>for</span> (Comparable <span style=color:#a6e22e>v</span> <span style=color:#f92672>=</span> a) {
-            System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>print</span>(v <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; &#34;</span>);
+    public static void show(Comparable[] a) {
+        for (Comparable v = a) {
+            System.out.print(v + &quot; &quot;);
         }
-        System.<span style=color:#a6e22e>out</span>.<span style=color:#a6e22e>println</span>();
+        System.out.println();
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>isSorted</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> 1; i <span style=color:#f92672>&lt;</span> a.<span style=color:#a6e22e>length</span>; i<span style=color:#f92672>++</span>) {
-            <span style=color:#66d9ef>if</span>(less(a[i],a[i<span style=color:#f92672>-</span>1])) {
-                <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>false</span>;
+    public static boolean isSorted(Comparable[] a) {
+        for (int i = 1; i &lt; a.length; i++) {
+            if(less(a[i],a[i-1])) {
+                return false;
             }
         }
 
-        <span style=color:#66d9ef>return</span> <span style=color:#66d9ef>true</span>;
+        return true;
     }
 
-}</code></pre></div><h1 id=选择排序>选择排序</h1><p>选择排序相对简单,每次从队列中选出最小的数，然后与第一个元素交换，然后再从剩下的数组中找出最小的，然后和第二个元素交换，以此类推。</p><p><strong>实现</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> SelectSort <span style=color:#a6e22e>extends</span> SortExample{
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
+}
+</code></pre><h1 id=选择排序>选择排序</h1><p>选择排序相对简单,每次从队列中选出最小的数，然后与第一个元素交换，然后再从剩下的数组中找出最小的，然后和第二个元素交换，以此类推。</p><p><strong>实现</strong></p><pre><code class=language-java>public class SelectSort extends SortExample{
+    public static void sort(Comparable[] a) {
 
-        <span style=color:#75715e>//数组长度
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span><span style=color:#f92672>:</span> a.<span style=color:#a6e22e>length</span>;
+        //数组长度
+        int N: a.length;
 
-        <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> 0; i <span style=color:#f92672>&lt;</span> N; i<span style=color:#f92672>++</span>) {
-            <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>min</span> <span style=color:#f92672>=</span> i;
-            <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> i <span style=color:#f92672>+</span> 1; j <span style=color:#f92672>&lt;</span> N; j<span style=color:#f92672>++</span>){
-                <span style=color:#66d9ef>if</span>(less(a[j],a[min])) {
-                    min <span style=color:#f92672>=</span> j;
+        for(int i = 0; i &lt; N; i++) {
+            int min = i;
+            for(int j = i + 1; j &lt; N; j++){
+                if(less(a[j],a[min])) {
+                    min = j;
                 }
             }
 
@@ -52,284 +52,292 @@
         }
     }
 
-}</code></pre></div><h1 id=插入排序>插入排序</h1><p>人们整理扑克牌时，通常一张一张抽取，然后将排插入已有牌中的适当位置。插入排序的实现类似于次，从数组中按顺序选取元素，然后插入，在这过程中我们可能需要向右移动已排序好的元素。</p><p><strong>实现</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> InsertSort <span style=color:#a6e22e>extends</span> SortExample {
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span><span style=color:#f92672>:</span> a.<span style=color:#a6e22e>length</span>; <span style=color:#75715e>// 数组长度
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> 1; i <span style=color:#f92672>&lt;</span> N; i<span style=color:#f92672>++</span>) {
-            <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> i; j <span style=color:#f92672>&gt;</span> 0 <span style=color:#f92672>&amp;&amp;</span> less(a[j],a[j<span style=color:#f92672>-</span>1]); j<span style=color:#f92672>--</span>) {
-                exch(a, j, j<span style=color:#f92672>-</span>1);
+}
+</code></pre><h1 id=插入排序>插入排序</h1><p>人们整理扑克牌时，通常一张一张抽取，然后将排插入已有牌中的适当位置。插入排序的实现类似于次，从数组中按顺序选取元素，然后插入，在这过程中我们可能需要向右移动已排序好的元素。</p><p><strong>实现</strong></p><pre><code class=language-java>
+public class InsertSort extends SortExample {
+    public static void sort(Comparable[] a) {
+        int N: a.length; // 数组长度
+        for (int i = 1; i &lt; N; i++) {
+            for(int j = i; j &gt; 0 &amp;&amp; less(a[j],a[j-1]); j--) {
+                exch(a, j, j-1);
             }
         }
     }
-}</code></pre></div><h1 id=希尔排序>希尔排序</h1><p>这是一种基于插入排序的快速排序。对于大规模的乱序数组来说插入排序的速度很慢，因为他只交换相邻的元素。
-shell的核心思想是数组中任意间隔h的元素是有序的。在排序时如果h很大，便能实现，元素远距离的交换。</p><p><strong>实现</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> ShellSort <span style=color:#a6e22e>extends</span> SortExample {
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
+}
+</code></pre><h1 id=希尔排序>希尔排序</h1><p>这是一种基于插入排序的快速排序。对于大规模的乱序数组来说插入排序的速度很慢，因为他只交换相邻的元素。
+shell的核心思想是数组中任意间隔h的元素是有序的。在排序时如果h很大，便能实现，元素远距离的交换。</p><p><strong>实现</strong></p><pre><code class=language-java>public class ShellSort extends SortExample {
+    public static void sort(Comparable[] a) {
 
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span> <span style=color:#f92672>=</span> a.<span style=color:#a6e22e>length</span>;
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>h</span> <span style=color:#f92672>=</span> 1;
+        int N = a.length;
+        int h = 1;
 
-        <span style=color:#66d9ef>while</span> (h <span style=color:#f92672>&lt;</span> N<span style=color:#f92672>/</span>3) {
-            h <span style=color:#f92672>=</span> 3 <span style=color:#f92672>*</span> h <span style=color:#f92672>+</span> 1;
+        while (h &lt; N/3) {
+            h = 3 * h + 1;
         }
 
-        <span style=color:#66d9ef>while</span> (h <span style=color:#f92672>&gt;=</span> 1) {
-            <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> h; i <span style=color:#f92672>&lt;</span> N; i<span style=color:#f92672>++</span>) {
-                <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> i; j <span style=color:#f92672>&gt;=</span> h <span style=color:#f92672>&amp;&amp;</span> less(a[j],a[j<span style=color:#f92672>-</span>h]);j <span style=color:#f92672>-=</span> h) {
-                    exch(a,j,j<span style=color:#f92672>-</span>h);
+        while (h &gt;= 1) {
+            for (int i = h; i &lt; N; i++) {
+                for (int j = i; j &gt;= h &amp;&amp; less(a[j],a[j-h]);j -= h) {
+                    exch(a,j,j-h);
                 }
             }
 
-            h: h<span style=color:#f92672>/</span>3 ;
+            h: h/3 ;
 
         }
     }
-}</code></pre></div><h1 id=归并排序>归并排序</h1><p>归并排序是一个利用分治思想的排序，它将一个问题缩小来解决问题。归并有两种实现，一种是自顶向下的，一种是自底向上的。两种方法的实现不同，但核心思想都是将问题缩小。</p><p><strong>自顶向下</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Java data-lang=Java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> MergeSort <span style=color:#a6e22e>extends</span> SortExample {
-    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>static</span> Comparable[] <span style=color:#a6e22e>aux</span>;
+}
+</code></pre><h1 id=归并排序>归并排序</h1><p>归并排序是一个利用分治思想的排序，它将一个问题缩小来解决问题。归并有两种实现，一种是自顶向下的，一种是自底向上的。两种方法的实现不同，但核心思想都是将问题缩小。</p><p><strong>自顶向下</strong></p><pre><code class=language-Java>public class MergeSort extends SortExample {
+    private static Comparable[] aux;
 
-   <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        aux<span style=color:#f92672>:</span> <span style=color:#66d9ef>new</span> Comparable[a.<span style=color:#a6e22e>length</span>];
-       sort(a,0,a.<span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span>1);
-       <span style=color:#66d9ef>assert</span>(isSorted(a));
+   public static void sort(Comparable[] a) {
+        aux: new Comparable[a.length];
+       sort(a,0,a.length -1);
+       assert(isSorted(a));
    }
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>){
-        <span style=color:#66d9ef>if</span>( hi <span style=color:#f92672>&lt;=</span> lo) {
-            <span style=color:#66d9ef>return</span>;
+    public static void sort(Comparable[] a, int lo, int hi){
+        if( hi &lt;= lo) {
+            return;
         }
 
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>mid</span><span style=color:#f92672>:</span> lo <span style=color:#f92672>+</span> (hi <span style=color:#f92672>-</span> lo)<span style=color:#f92672>/</span>2;
+        int mid: lo + (hi - lo)/2;
         sort(a,lo,mid);
-        sort(a,mid <span style=color:#f92672>+</span> 1, hi);
-        <span style=color:#66d9ef>if</span>(less(a[mid <span style=color:#f92672>+</span> 1],a[mid])){
+        sort(a,mid + 1, hi);
+        if(less(a[mid + 1],a[mid])){
             merge(a, lo, mid, hi);
         }
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>merge</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>,<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>mid</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> lo, j <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> 1;
+    public static void merge(Comparable[] a, int lo,int mid, int hi) {
+        int i = lo, j = mid + 1;
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> lo; k <span style=color:#f92672>&lt;=</span> hi; k<span style=color:#f92672>++</span>) {
-           aux[k] <span style=color:#f92672>=</span> a[k];
+        for (int k = lo; k &lt;= hi; k++) {
+           aux[k] = a[k];
         }
 
-       <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> lo; k <span style=color:#f92672>&lt;=</span> hi; k<span style=color:#f92672>++</span>) {
-           <span style=color:#66d9ef>if</span>(i <span style=color:#f92672>&gt;</span>  mid) {
-               a[k] <span style=color:#f92672>=</span> aux[j<span style=color:#f92672>++</span>];
-           } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(j <span style=color:#f92672>&gt;</span> hi) {
-               a[k] <span style=color:#f92672>=</span> aux[i<span style=color:#f92672>++</span>];
-           } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(less(aux[i],aux[j])) {
-               a[k] <span style=color:#f92672>=</span> aux[i<span style=color:#f92672>++</span>];
-           } <span style=color:#66d9ef>else</span> {
-                a[k] <span style=color:#f92672>=</span> aux[j<span style=color:#f92672>++</span>];
+       for (int k = lo; k &lt;= hi; k++) {
+           if(i &gt;  mid) {
+               a[k] = aux[j++];
+           } else if(j &gt; hi) {
+               a[k] = aux[i++];
+           } else if(less(aux[i],aux[j])) {
+               a[k] = aux[i++];
+           } else {
+                a[k] = aux[j++];
            }
        }
     }
-}</code></pre></div><p><strong>自底向上</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> MergeSortBU <span style=color:#a6e22e>extends</span> SortExample {
-    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>static</span> Comparable[] <span style=color:#a6e22e>aux</span>;
+}
+</code></pre><p><strong>自底向上</strong></p><pre><code class=language-java>
+public class MergeSortBU extends SortExample {
+    private static Comparable[] aux;
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span><span style=color:#f92672>:</span> a.<span style=color:#a6e22e>length</span>;
-        aux<span style=color:#f92672>:</span> <span style=color:#66d9ef>new</span> Comparable[N];
+    public static void sort(Comparable[] a) {
+        int N: a.length;
+        aux: new Comparable[N];
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>sz</span> <span style=color:#f92672>=</span> 1; sz <span style=color:#f92672>&lt;</span> N; sz <span style=color:#f92672>=</span> sz <span style=color:#f92672>+</span> sz) {
-            <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span><span style=color:#f92672>=</span> 0; lo <span style=color:#f92672>&lt;</span> N <span style=color:#f92672>-</span> sz; lo <span style=color:#f92672>+=</span> sz <span style=color:#f92672>+</span> sz) {
-                merge(a, lo, lo <span style=color:#f92672>+</span> sz <span style=color:#f92672>-</span> 1, Math.<span style=color:#a6e22e>min</span>(lo <span style=color:#f92672>+</span> sz <span style=color:#f92672>+</span> sz <span style=color:#f92672>-</span> 1, N <span style=color:#f92672>-</span> 1));
+        for (int sz = 1; sz &lt; N; sz = sz + sz) {
+            for (int lo= 0; lo &lt; N - sz; lo += sz + sz) {
+                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
             }
         }
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>merge</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>mid</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>=</span> lo, j <span style=color:#f92672>=</span> mid <span style=color:#f92672>+</span> 1;
+    public static void merge(Comparable[] a, int lo, int mid, int hi) {
+        int i = lo, j = mid + 1;
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> lo; k <span style=color:#f92672>&lt;=</span> hi; k<span style=color:#f92672>++</span>) {
-            aux[k] <span style=color:#f92672>=</span> a[k];
+        for (int k = lo; k &lt;= hi; k++) {
+            aux[k] = a[k];
         }
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> lo; k <span style=color:#f92672>&lt;=</span> hi; k<span style=color:#f92672>++</span>) {
-            <span style=color:#66d9ef>if</span> (i <span style=color:#f92672>&gt;</span> mid) {
-                a[k] <span style=color:#f92672>=</span> aux[j<span style=color:#f92672>++</span>];
-            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (j <span style=color:#f92672>&gt;</span> hi) {
-                a[k] <span style=color:#f92672>=</span> aux[i<span style=color:#f92672>++</span>];
-            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span> (less(aux[i], aux[j])) {
-                a[k] <span style=color:#f92672>=</span> aux[i<span style=color:#f92672>++</span>];
-            } <span style=color:#66d9ef>else</span> {
-                a[k] <span style=color:#f92672>=</span> aux[j<span style=color:#f92672>++</span>];
+        for (int k = lo; k &lt;= hi; k++) {
+            if (i &gt; mid) {
+                a[k] = aux[j++];
+            } else if (j &gt; hi) {
+                a[k] = aux[i++];
+            } else if (less(aux[i], aux[j])) {
+                a[k] = aux[i++];
+            } else {
+                a[k] = aux[j++];
             }
         }
     }
 
-}</code></pre></div><p>对于归并排序还有一种改进，就是当子问题的规模足够小时改用插入排序，来结合两者优点，提高效率。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> MergeXSort <span style=color:#a6e22e>extends</span> SortExample{
-    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>static</span> Comparable[] <span style=color:#a6e22e>aux</span>;
+}
+</code></pre><p>对于归并排序还有一种改进，就是当子问题的规模足够小时改用插入排序，来结合两者优点，提高效率。</p><pre><code class=language-java>public class MergeXSort extends SortExample{
+    private static Comparable[] aux;
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        aux<span style=color:#f92672>:</span> <span style=color:#66d9ef>new</span> Comparable[a.<span style=color:#a6e22e>length</span>];
-        sort(a,0,a.<span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span>1);
-        <span style=color:#66d9ef>assert</span>(isSorted(a));
+    public static void sort(Comparable[] a) {
+        aux: new Comparable[a.length];
+        sort(a,0,a.length -1);
+        assert(isSorted(a));
     }
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>){
-        <span style=color:#66d9ef>if</span>( hi <span style=color:#f92672>&lt;=</span> lo) {
-            <span style=color:#66d9ef>return</span>;
+    public static void sort(Comparable[] a, int lo, int hi){
+        if( hi &lt;= lo) {
+            return;
         }
-        <span style=color:#66d9ef>if</span>(hi <span style=color:#f92672>-</span>lo <span style=color:#f92672>&gt;</span>15) {
-            <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>mid</span> <span style=color:#f92672>=</span> lo <span style=color:#f92672>+</span> (hi <span style=color:#f92672>-</span> lo) <span style=color:#f92672>/</span> 2;
+        if(hi -lo &gt;15) {
+            int mid = lo + (hi - lo) / 2;
             sort(a, lo, mid);
-            sort(a, mid <span style=color:#f92672>+</span> 1, hi);
-            <span style=color:#66d9ef>if</span>(less(a[mid <span style=color:#f92672>+</span> 1],a[mid])){
+            sort(a, mid + 1, hi);
+            if(less(a[mid + 1],a[mid])){
                 merge(a, lo, mid, hi);
             }
-        } <span style=color:#66d9ef>else</span> {
+        } else {
 
             insert(a,lo,hi);
-            <span style=color:#66d9ef>return</span>;
+            return;
         }
 
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>merge</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>,<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>mid</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span> <span style=color:#f92672>:</span> lo, j<span style=color:#f92672>:</span> mid <span style=color:#f92672>+</span> 1;
+    public static void merge(Comparable[] a, int lo,int mid, int hi) {
+        int i : lo, j: mid + 1;
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span><span style=color:#f92672>:</span> lo; k <span style=color:#f92672>&lt;=</span> hi; k<span style=color:#f92672>++</span>) {
-            aux[k]<span style=color:#f92672>:</span> a[k];
+        for (int k: lo; k &lt;= hi; k++) {
+            aux[k]: a[k];
         }
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span><span style=color:#f92672>:</span> lo; k <span style=color:#f92672>&lt;=</span> hi; k<span style=color:#f92672>++</span>) {
-            <span style=color:#66d9ef>if</span>(i <span style=color:#f92672>&gt;</span>  mid) {
-                a[k]<span style=color:#f92672>:</span> aux[j<span style=color:#f92672>++</span>];
-            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(j <span style=color:#f92672>&gt;</span> hi) {
-                a[k]<span style=color:#f92672>:</span> aux[i<span style=color:#f92672>++</span>];
-            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(less(aux[i],aux[j])) {
-                a[k]<span style=color:#f92672>:</span> aux[i<span style=color:#f92672>++</span>];
-            } <span style=color:#66d9ef>else</span> {
-                a[k]<span style=color:#f92672>:</span> aux[j<span style=color:#f92672>++</span>];
+        for (int k: lo; k &lt;= hi; k++) {
+            if(i &gt;  mid) {
+                a[k]: aux[j++];
+            } else if(j &gt; hi) {
+                a[k]: aux[i++];
+            } else if(less(aux[i],aux[j])) {
+                a[k]: aux[i++];
+            } else {
+                a[k]: aux[j++];
             }
         }
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>insert</span>(Comparable[] <span style=color:#a6e22e>a</span>,<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>,<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span><span style=color:#f92672>:</span> lo <span style=color:#f92672>-</span> hi <span style=color:#f92672>+</span> 1; <span style=color:#75715e>// 数组长度
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span><span style=color:#f92672>:</span> lo; i <span style=color:#f92672>&lt;</span> hi <span style=color:#f92672>+</span> 1; i<span style=color:#f92672>++</span>) {
-            <span style=color:#66d9ef>for</span>(<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span><span style=color:#f92672>:</span> i; j <span style=color:#f92672>&gt;</span> 0 <span style=color:#f92672>&amp;&amp;</span> less(a[j],a[j<span style=color:#f92672>-</span>1]); j<span style=color:#f92672>--</span>) {
-                exch(a, j, j<span style=color:#f92672>-</span>1);
+    public static void insert(Comparable[] a,int lo,int hi) {
+        int N: lo - hi + 1; // 数组长度
+        for (int i: lo; i &lt; hi + 1; i++) {
+            for(int j: i; j &gt; 0 &amp;&amp; less(a[j],a[j-1]); j--) {
+                exch(a, j, j-1);
             }
         }
     }
 
-}</code></pre></div><h1 id=快速排序>快速排序</h1><p>快速排序是当今使用最广泛的排序算法之一。它的空间复杂度和时间复杂度都十分的优秀，这是别的排序算法所不具备的优势。
+}
+</code></pre><h1 id=快速排序>快速排序</h1><p>快速排序是当今使用最广泛的排序算法之一。它的空间复杂度和时间复杂度都十分的优秀，这是别的排序算法所不具备的优势。
 快速排序是一种分治的排序算法。将数组一份为二，将有序的子数组归并以使得整个数组有序。
-归并排序使用切分，将数组一分为二，使得一边的数组都小于切分的元素，一别的数组都大于切分的元素。递归地调用切分，来排序。</p><p><strong>实现</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> QuickSort <span style=color:#a6e22e>extends</span> SortExample {
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>){
+归并排序使用切分，将数组一分为二，使得一边的数组都小于切分的元素，一别的数组都大于切分的元素。递归地调用切分，来排序。</p><p><strong>实现</strong></p><pre><code class=language-java>public class QuickSort extends SortExample {
+    public static void sort(Comparable[] a){
         shuffleArray(a);
-        sort(a,0,a.<span style=color:#a6e22e>length</span><span style=color:#f92672>-</span>1);
+        sort(a,0,a.length-1);
     }
 
-    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
+    private static void sort(Comparable[] a, int lo, int hi) {
 
-        <span style=color:#66d9ef>if</span>(lo <span style=color:#f92672>&gt;=</span> hi) {
-            <span style=color:#66d9ef>return</span>;
+        if(lo &gt;= hi) {
+            return;
         }
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span><span style=color:#f92672>:</span> partition(a,lo,hi);
-        sort(a,lo,j <span style=color:#f92672>-</span> 1);
-        sort(a,j <span style=color:#f92672>+</span> 1,hi);
+        int j: partition(a,lo,hi);
+        sort(a,lo,j - 1);
+        sort(a,j + 1,hi);
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>partition</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
+    public static int partition(Comparable[] a, int lo, int hi) {
 
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span><span style=color:#f92672>:</span> lo, j<span style=color:#f92672>:</span> hi <span style=color:#f92672>+</span> 1;
-        Comparable <span style=color:#a6e22e>v</span><span style=color:#f92672>:</span> a[lo];
+        int i: lo, j: hi + 1;
+        Comparable v: a[lo];
 
-        <span style=color:#66d9ef>while</span> (<span style=color:#66d9ef>true</span>) {
-            <span style=color:#66d9ef>while</span> (less(a[<span style=color:#f92672>++</span>i],v)) <span style=color:#66d9ef>if</span>(i <span style=color:#f92672>==</span> hi) <span style=color:#66d9ef>break</span>;
-            <span style=color:#66d9ef>while</span> (less(v,a[<span style=color:#f92672>--</span>j])) <span style=color:#66d9ef>if</span> (j <span style=color:#f92672>==</span> lo) <span style=color:#66d9ef>break</span>;
-            <span style=color:#66d9ef>if</span> (i <span style=color:#f92672>&gt;=</span> j) <span style=color:#66d9ef>break</span>;
+        while (true) {
+            while (less(a[++i],v)) if(i == hi) break;
+            while (less(v,a[--j])) if (j == lo) break;
+            if (i &gt;= j) break;
             exch(a,i,j);
         }
         exch(a,lo,j);
 
-        <span style=color:#66d9ef>return</span> j;
+        return j;
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>shuffleArray</span>(Comparable[] <span style=color:#a6e22e>ar</span>)
+    public static void shuffleArray(Comparable[] ar)
     {
-        <span style=color:#75715e>// If running on Java 6 or older, use `new Random()` on RHS here
-</span><span style=color:#75715e></span>        Random <span style=color:#a6e22e>rnd</span><span style=color:#f92672>:</span> ThreadLocalRandom.<span style=color:#a6e22e>current</span>();
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span><span style=color:#f92672>:</span> ar.<span style=color:#a6e22e>length</span> <span style=color:#f92672>-</span> 1; i <span style=color:#f92672>&gt;</span> 0; i<span style=color:#f92672>--</span>)
+        // If running on Java 6 or older, use `new Random()` on RHS here
+        Random rnd: ThreadLocalRandom.current();
+        for (int i: ar.length - 1; i &gt; 0; i--)
         {
-            <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>index</span><span style=color:#f92672>:</span> rnd.<span style=color:#a6e22e>nextInt</span>(i <span style=color:#f92672>+</span> 1);
-            <span style=color:#75715e>// Simple swap
-</span><span style=color:#75715e></span>            Comparable <span style=color:#a6e22e>a</span><span style=color:#f92672>:</span> ar[index];
-            ar[index]<span style=color:#f92672>:</span> ar[i];
-            ar[i]<span style=color:#f92672>:</span> a;
+            int index: rnd.nextInt(i + 1);
+            // Simple swap
+            Comparable a: ar[index];
+            ar[index]: ar[i];
+            ar[i]: a;
         }
     }
-}</code></pre></div><h2 id=三向切分的快速排序>三向切分的快速排序</h2><p><strong>实现</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> Quick3way <span style=color:#a6e22e>extends</span> SortExample {
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>){
+}
+</code></pre><h2 id=三向切分的快速排序>三向切分的快速排序</h2><p><strong>实现</strong></p><pre><code class=language-java>public class Quick3way extends SortExample {
+    public static void sort(Comparable[] a){
         shuffleArray(a);
-        sort(a,0,a.<span style=color:#a6e22e>length</span><span style=color:#f92672>-</span>1);
+        sort(a,0,a.length-1);
     }
 
-    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lo</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>hi</span>) {
-        <span style=color:#66d9ef>if</span> (hi <span style=color:#f92672>&lt;=</span> lo) {
-            <span style=color:#66d9ef>return</span>;
+    private static void sort(Comparable[] a, int lo, int hi) {
+        if (hi &lt;= lo) {
+            return;
         }
 
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>lt</span> <span style=color:#f92672>=</span> lo,i<span style=color:#f92672>:</span> lo <span style=color:#f92672>=</span> 1, gt<span style=color:#f92672>:</span> hi;
-        Comparable <span style=color:#a6e22e>v</span><span style=color:#f92672>:</span> a[lo];
+        int lt = lo,i: lo = 1, gt: hi;
+        Comparable v: a[lo];
 
-        <span style=color:#66d9ef>while</span> (i <span style=color:#f92672>&lt;=</span> gt) {
-            <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>cmp</span><span style=color:#f92672>:</span> a[i].<span style=color:#a6e22e>compareTo</span>(v);
+        while (i &lt;= gt) {
+            int cmp: a[i].compareTo(v);
 
-            <span style=color:#66d9ef>if</span>(cmp <span style=color:#f92672>&lt;</span> 0) {
-                exch(a,lt<span style=color:#f92672>++</span>,i<span style=color:#f92672>++</span>);
-            } <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( cmp <span style=color:#f92672>&gt;</span> 0) {
-                exch(a,i,gt<span style=color:#f92672>--</span>);
-            } <span style=color:#66d9ef>else</span> {
-                i<span style=color:#f92672>++</span>;
+            if(cmp &lt; 0) {
+                exch(a,lt++,i++);
+            } else if( cmp &gt; 0) {
+                exch(a,i,gt--);
+            } else {
+                i++;
             }
         }
 
-        sort(a,lo,lt<span style=color:#f92672>-</span>1);
-        sort(a,gt <span style=color:#f92672>+</span> 1,hi);
+        sort(a,lo,lt-1);
+        sort(a,gt + 1,hi);
     }
 
-}</code></pre></div><h1 id=堆排序>堆排序</h1><p>堆排序很简单，它利用了优先队列的性质，只需要实现优先队列的下沉的算法就可以很容易的实现。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-java data-lang=java><span style=color:#66d9ef>public</span> <span style=color:#a6e22e>class</span> HeapSort <span style=color:#a6e22e>extends</span> SortExample{
+}
+</code></pre><h1 id=堆排序>堆排序</h1><p>堆排序很简单，它利用了优先队列的性质，只需要实现优先队列的下沉的算法就可以很容易的实现。</p><pre><code class=language-java>public class HeapSort extends SortExample{
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sort</span>(Comparable[] <span style=color:#a6e22e>a</span>) {
-        <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span> <span style=color:#f92672>=</span> a.<span style=color:#a6e22e>length</span>;
+    public static void sort(Comparable[] a) {
+        int N = a.length;
 
-        <span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span> <span style=color:#f92672>=</span> N<span style=color:#f92672>/</span>2; k <span style=color:#f92672>&gt;=</span>1 ; k<span style=color:#f92672>--</span> ) {
+        for (int k = N/2; k &gt;=1 ; k-- ) {
             sink(a,k,N);
         }
 
-        <span style=color:#66d9ef>while</span> (N <span style=color:#f92672>&gt;</span> 1) {
-            HeapSort.<span style=color:#a6e22e>exch</span>(a,1,N<span style=color:#f92672>--</span>);
-            HeapSort.<span style=color:#a6e22e>sink</span>(a,1,N);
+        while (N &gt; 1) {
+            HeapSort.exch(a,1,N--);
+            HeapSort.sink(a,1,N);
         }
 
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>sink</span>(Comparable[] <span style=color:#a6e22e>a</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>k</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>N</span>) {
-        <span style=color:#66d9ef>while</span> ( k <span style=color:#f92672>*</span> 2 <span style=color:#f92672>&lt;=</span> N) {
-            <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span> <span style=color:#f92672>=</span> 2 <span style=color:#f92672>*</span> k;
-            <span style=color:#66d9ef>if</span>(j  <span style=color:#f92672>&lt;</span> N <span style=color:#f92672>&amp;&amp;</span> HeapSort.<span style=color:#a6e22e>less</span>(a,j,j<span style=color:#f92672>+</span>1)) j<span style=color:#f92672>++</span>;
-            <span style=color:#66d9ef>if</span>(<span style=color:#f92672>!</span>HeapSort.<span style=color:#a6e22e>less</span>(a,k,j)) <span style=color:#66d9ef>break</span>;
-            HeapSort.<span style=color:#a6e22e>exch</span>(a,k,j);
-            k<span style=color:#f92672>:</span> j;
+    public static void sink(Comparable[] a, int k, int N) {
+        while ( k * 2 &lt;= N) {
+            int j = 2 * k;
+            if(j  &lt; N &amp;&amp; HeapSort.less(a,j,j+1)) j++;
+            if(!HeapSort.less(a,k,j)) break;
+            HeapSort.exch(a,k,j);
+            k: j;
         }
     }
 
-    <span style=color:#66d9ef>private</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>boolean</span> <span style=color:#a6e22e>less</span>(Comparable[] <span style=color:#a6e22e>pq</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span>) {
-        <span style=color:#66d9ef>return</span> pq[i<span style=color:#f92672>-</span>1].<span style=color:#a6e22e>compareTo</span>(pq[j<span style=color:#f92672>-</span>1]) <span style=color:#f92672>&lt;</span> 0;
+    private static boolean less(Comparable[] pq, int i, int j) {
+        return pq[i-1].compareTo(pq[j-1]) &lt; 0;
     }
 
-    <span style=color:#66d9ef>public</span> <span style=color:#a6e22e>static</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>exch</span>(Comparable[] <span style=color:#a6e22e>pq</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>i</span>, <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>j</span>) {
-        Comparable <span style=color:#a6e22e>swap</span><span style=color:#f92672>:</span> pq[i<span style=color:#f92672>-</span>1];
-        pq[i<span style=color:#f92672>-</span>1]<span style=color:#f92672>:</span> pq[j<span style=color:#f92672>-</span>1];
-        pq[j<span style=color:#f92672>-</span>1]<span style=color:#f92672>:</span> swap;
+    public static void exch(Comparable[] pq, int i, int j) {
+        Comparable swap: pq[i-1];
+        pq[i-1]: pq[j-1];
+        pq[j-1]: swap;
     }
 
 
-}</code></pre></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://blog.bing0ne.com/tags/algo>ALGO</a></li></ul></footer><div id=disqus_thread></div><script>var disqus_shortname='bing0ne';(function(){var d=document,s=d.createElement('script');s.src='https://'+disqus_shortname+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the
-<a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript></article></main><footer class=footer><span>&copy; 2019 <a href=https://blog.bing0ne.com>bing0ne Base</a></span>
-<span>&middot;</span>
-<span>Powered by <a href=https://gohugo.io/ rel=noopener target=_blank>Hugo️️</a>️</span>
-<span>&middot;</span>
-<span>Theme️ <a href=https://github.com/nanxiaobei/hugo-paper rel=noopener target=_blank>Paper</a></span></footer><script src=https://blog.bing0ne.com/highlight.min.js></script><script>hljs.initHighlightingOnLoad();</script></body></html>
+}
+</code></pre></div><div class=post_footer><div class=meta><div class=info><span class="field tags"><i class=remixicon-stack-line></i><a href=https://blog.bing0ne.com/tags/algo/>ALGO</a></span></div></div></div></div></div></div><a id=back_to_top href=# class=back_to_top><span>△</span></a></div><footer class=footer><div class=powered_by><a href=https://zeuk.me>Designed by Zeuk,</a>
+<a href=http://www.gohugo.io/>Proudly published with Hugo</a></div><div class=footer_slogan><span>Share Memory by Communication</span></div></footer><script src=https://blog.bing0ne.com/js/jquery-3.3.1.min.js></script><script src=https://blog.bing0ne.com/js/zozo.js></script><script src=https://blog.bing0ne.com/js/highlight.pack.js></script><link href=https://blog.bing0ne.com/css/fancybox.min.css rel=stylesheet><script src=https://blog.bing0ne.com/js/fancybox.min.js></script><script>hljs.initHighlightingOnLoad()</script><script type=text/javascript async src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML">MathJax.Hub.Config({tex2jax:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\[\[','\]\]']],processEscapes:true,processEnvironments:true,skipTags:['script','noscript','style','textarea','pre'],TeX:{equationNumbers:{autoNumber:"AMS"},extensions:["AMSmath.js","AMSsymbols.js"]}}});MathJax.Hub.Queue(function(){var all=MathJax.Hub.getAllJax(),i;for(i=0;i<all.length;i+=1){all[i].SourceElement().parentNode.className+=' has-jax';}});</script><style>code.has-jax{font:inherit;font-size:100%;background:inherit;border:inherit;color:#515151}</style><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;ga('create','UA-71832126-1','auto');ga('send','pageview');}</script><script async src=https://www.google-analytics.com/analytics.js></script><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
+var d=document,s=d.createElement('script');s.async=true;s.src='//'+"bing0ne"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></body></html>
