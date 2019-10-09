@@ -30,13 +30,14 @@
       {{ if .Site.Params.valine.enable }}
       {{ partial "comments.html" . }}
       {{ end }}
+      <div class="disqus">
+        {{ template "_internal/disqus.html" . }}
+      </div>
     </div>
   </div>
   <a id="back_to_top" href="#" class="back_to_top"><span>△</span></a>
 </div>
-<div class="disqus">
-  {{ template "_internal/disqus.html" . }}
-</div>
+
 {{ partial "footer.html" . }}
 {{ partial "js.html" . }}
 </body>
