@@ -1,122 +1,70 @@
 baseURL = "https://blog.bing0ne.com"
 languageCode = "en"
-title = "bing0ne Base"
-theme = "paper"
-enableRobotsTXT = true
-PygmentsCodeFences = true
-canonifyurls = true
+defaultContentLanguage = "en"
+title = "bing0ne Base"                    # site title  # 网站标题
+theme = "zozo"
+hasCJKLanguage = true                # has chinese/japanese/korean ? # 自动检测是否包含 中文\日文\韩文
+summaryLength = 100
+paginate = 4                         # shows the number of articles  # 首页显示文章数量
 enableEmoji = true
-hasCJKLanguage = true
-preserveTaxonomyNames = true
+googleAnalytics = "UA-71832126-1"                 # your google analytics id
+disqusShortname = "bing0ne"                 # your discuss shortname
 
-# Disqus Username
-disqusShortname = "bing0ne"
+[author]                             # essential                     # 必需
+  name = "bing0ne"
 
-# Google Analytics UA number
-googleAnalytics = "UA-71832126-1"
+[blackfriday]
+  smartypants = false
 
-# Copyright of your post
-copyright = "© This post is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License，please give source if you wish to quote or reproduce."
-
-# Initial site menu, you can extend menu with content.
-[[menu.main]]
+[[menu.main]]                        # config your menu  # 配置菜单
   name = "Home"
   weight = 10
   identifier = "home"
   url = "/"
-
 [[menu.main]]
-  name = "Dev"
+  name = "Archive"
   weight = 20
-  identifier = "dev"
-  url = "/categories/dev/"
-
-[[menu.main]]
-  name = "Eassy"
-  weight = 30
-  identifier = "eassy"
-  url = "/categories/eassy/"
-
-[[menu.main]]
-  name = "GSoC"
-  weight = 40
-  identifier = "gsoc"
-  url = "/categories/gsoc/"
-
+  identifier = "archive"
+  url = "/posts/"
 [[menu.main]]
   name = "Tags"
-  weight = 50
+  weight = 30
   identifier = "tags"
   url = "/tags/"
+#[[menu.main]]
+#  name = "About"
+#  weight = 40
+#  identifier = "about"
+#  url = "/about/"
 
-# Add your own params here
 [params]
-  author = "Bingwen Ma"
-  # bg = "images/grey-prism.svg"
-  avatar = "img/avatar-bing0ne.jpeg"
-  seotitle = "bing0ne Base"
-  subtitle = "~ Keep It Simple & Stupid ~"
-  description = "bing0ne Base"
-  paginate = 10
+  subTitle = "Neverland"                                       # site's subTitle  # 网站二级标题
+  footerSlogan = "Share Memory by Communication"                                          # site's footer slogan  # 网站页脚标语
+  keywords = ["blog", "bing0ne","gopher", "gsoc"]                                  # site's keywords  # 网站关键字
+  description = "bing0ne Knowledge Base"                        # site's description  # 网站描述
 
-  # Choose your social networks
-  email = "hi@bing0ne.com"
-  github = "bing0n3"
-  twitter = "bing0ne"
-  # linkedin = "bing0ne"
-  # weibo = "ponymbw"
-  # wechat= "images/qrcode.jpg"  # Replace with your wechat qrcode image
-  # facebook = "facebook_username"
-  # google = "googlplus_id_number"
-  # instagram = "instagram_username"
-  # youtube = "youtube_username"
-  # vimeo = "vimeo_username"
-  # medium = "medium_username"
-  # quora = "quora_username"
-  # pinterest = "pinterest_username"
-  # dribbble = "dribbble_username"
-  # behance = "behance_username"
-  # jsfiddle = "jsfiddle_username"
-  # codepen = "codepen_username"
-  # zhihu = "zhihu_username"
-  # douban = "douban_username"
-  # bilibili = "bilibili_id_number"
-  # stackoverflow = "laozhu"
-  # codesandbox = "melaozhu"
-  # npm = "laozhu"
-  # reddit = "melaozhu"
+# mathjax
+  enableMathJax = true                                                 # enable mathjax  # 是否使用mathjax（数学公式）
 
-  # Overrid theme styles in this file
-  customStyle = "styles/custom.scss"
+  enableSummary = true                                                 # display the article summary  # 是否显示文章摘要
 
-  # Changyan Comments (China Only)
-  changyan = false
-  changyanId = "cyt3toRiB"
-  changyanConf = "prod_0908b1cb9a581501753cce1ed074dbe3"
+# Valine.
+# You can get your appid and appkey from https://leancloud.cn
+# more info please open https://valine.js.org
+[params.valine]
+  enable = false
+  appId = ""
+  appKey = ""
+  placeholder = " "
+  visitor = true
 
-  # Google Webmaster
-  # https://www.google.com/webmasters/
-  googleSiteVerification = "_moDmnnBNVLBN1rzNxyGUGdPHE20YgbmrtzLIbxaWFc"
+[social]
+  twitter = "https://twitter.com/bing0n3"
+  #facebook = " "
+  #weibo = " "
+  instagram = "https://instagram.com/bing0n3"
+  github = "https://github.com/bing0n3"
 
-  # Bing Webmaster
-  # https://www.bing.com/toolbox/webmaster/
-  msValidate = "22596E34341DD1D17D6022C44647E587"
-
-  # Baidu Webmaster (China Only)
-  # https://zhanzhang.baidu.com/
-  # baiduSiteVerification = "MZ23SPxxfa"
-
-  # Sogou Webmaster (China Only)
-  # http://zhanzhang.sogou.com/
-  # sogouSiteVerification = "m2jktMQTZm"
-
-  # 360 Webmaster (China Only)
-  # http://zhanzhang.so.com/
-  # soSiteVerification = "b7ab3b4c2edbc856642004d1b8c27a91"
-
-  # Baidu Tongji (China Only)
-  # https://tongji.baidu.com/
-  # baiduTongji = "e21dc1e8a592188271b615159dc88af7"
 
 [permalinks]
   post = "/p/:slug"
