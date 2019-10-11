@@ -5,6 +5,7 @@ date: 2019-08-24T12:15:02+08:00
 tags: ["GsoC"]
 slug: "gsoc-final"
 categories: ["GSoC"]
+toc: false
 ---
 
 ## Work Done in the summer 
