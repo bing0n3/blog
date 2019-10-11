@@ -5,7 +5,6 @@ slug: "mariadb-docker"
 title: "How to install and Using MariaDB via Docker in Mac OS X"
 tags: ["Env"]
 description: "How to install MariaDB via Docker in Mac OS X "
-showtoc: true
 categories: ["Dev"]
 ---
 

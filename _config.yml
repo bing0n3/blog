@@ -131,8 +131,8 @@ comments:
     clientSecret: 1e0f9775c786bdb4ad9fc8f34f10e43faece8d1d # GitHub Application Client Secret
     repository  : blog # GitHub repo
     owner       : bing0n3 # GitHub repo owner
-    admin:  # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
-      - bing0n3
+    admin: [bing0n3] # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+
 
   ## Valine
   # please refer to https://valine.js.org/en/ for more info.
@@ -210,8 +210,6 @@ defaults:
       sharing: true
       license: true
       comment: true
-      aside:
-        toc: false
       show_edit_on_github: true
       show_subscribe: true
       pageview: true

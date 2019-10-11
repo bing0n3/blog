@@ -5,7 +5,6 @@ slug: "leetcode-02"
 title: "LeetCode 02. Add Two Numbers"
 tags: ["GO","LeetCode","ALGO"]
 description: "这是LeetCode题库中的第二题。两个列表分别代表两个数。将两个数进行相加，返回一个数，并使用列表的形式输出。"
-showtoc: false
 categories: ["Dev"]
 ---
 

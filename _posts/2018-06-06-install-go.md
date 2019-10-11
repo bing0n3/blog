@@ -8,7 +8,6 @@ tags:
     - ENV
 
 description: "Go 语言是一个将静态语言的安全性和高效性与动态语言的易开发性进行有机结合的语言。本文将要介绍如何在OS X通过Homebrew中安装和配置GO。"
-showtoc: false
 categories: ["Dev"]
 ---
 

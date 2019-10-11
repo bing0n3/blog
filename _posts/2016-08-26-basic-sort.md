@@ -4,7 +4,6 @@ date: "2016-08-26T18:27:24+08:00"
 slug: "basic-sort"
 title: "基本的排序算法"
 tags: ['ALGO']
-showtoc: false
 categories: ["Dev"]
 ---
 
