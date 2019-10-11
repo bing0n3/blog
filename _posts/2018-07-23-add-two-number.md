@@ -1,4 +1,5 @@
 ---
+layout: article
 author: bing0ne
 date: "2018-07-23T20:49:30+08:00"
 slug: "leetcode-02"

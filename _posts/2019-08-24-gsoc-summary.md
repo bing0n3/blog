@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "GsoC CHAOSS/Augur"
 author: "bing0ne"
 date: 2019-08-24T12:15:02+08:00

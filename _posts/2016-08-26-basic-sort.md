@@ -1,4 +1,5 @@
 ---
+layout: article
 author: bing0ne
 date: "2016-08-26T18:27:24+08:00"
 slug: "basic-sort"

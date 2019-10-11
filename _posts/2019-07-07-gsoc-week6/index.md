@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "GsoC Week 6 Summary"
 author: "bing0ne"
 date: 2019-07-07T15:31:02+08:00

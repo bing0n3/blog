@@ -1,4 +1,5 @@
 ---
+layout: article
 author: bing0ne
 date: "2018-06-06T15:53:26+08:00"
 slug: "install-go"

@@ -1,4 +1,5 @@
 ---
+layout: article
 title: "GsoC Week 8 Summary"
 author: "bing0ne"
 date: 2019-07-21T20:35:02+08:00

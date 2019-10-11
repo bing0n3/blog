@@ -1,4 +1,5 @@
 ---
+layout: article
 author: bing0ne
 date: "2019-01-05T22:47:30-05:00"
 slug: "mariadb-docker"
