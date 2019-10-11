@@ -209,8 +209,9 @@ defaults:
       layout: article
       sharing: true
       license: true
+      comment: true
       aside:
-        toc: true
+        toc: false
       show_edit_on_github: true
       show_subscribe: true
       pageview: true
